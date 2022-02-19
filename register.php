@@ -39,32 +39,69 @@
 
   <?php
    include 'common/header.php';
+   session_start();
+   include 'Connection.php'; 
+
+if (isset($_POST['btnregister']))
+{
+
+  $name=$_POST['txtname'];  
+  $username=$_POST['txtusername'];  
+  $phone=$_POST['txtphone'];  
+  $email=$_POST['txtemail'];  
+  $nrc=$_POST['txtnrc'];  
+  $pass=$_POST['txtpass'];  
+  $address=$_POST['txtaddress']; 
+  $image=$_FILES['txtprofile']['name'];
+   $folder="userProfile/";
+   if($image)
+   {
+    $filename=$folder."".$image;
+    $copy=copy($_FILES['txtprofile']['tmp_name'],$filename);
+   }
+   
+
+  $insert="insert into customer (name,username,email,address,phone,nrc_no,profile_image,password) values ('$name','$username','$email','$address','$phone','$nrc','$image','$pass')";
+  $ret=mysqli_query($connect,$insert);
+
+  if($ret)
+  {
+    echo"<script>alert('Successful Added ');</script>";
+    //  echo"<script>window.location='buslist.php';</script>";
+  }
+  else
+  {
+    echo mysqli_error($connect);
+  }
+}
+
    ?>
   <!-- END nav -->
 
   <div class="hero-wrap" style="background-image: url('images/bg.jpg');" data-stellar-background-ratio="0.4">
     <div class="overlay"></div>
     <div class="container">
-      <form action="register.php" method="post" class="search-property-5">
+      <form action="register.php" method="post" class="search-property-5"  enctype="multipart/form-data">
 
         <div class="row no-gutters slider-text justify-content-start align-items-center">
-          <div class="col-lg-5">
-
+          <div class="col-lg-5 col-md-4 ">
+          <div class="form-row">
             <div class="d-flex justify-content-start">
               <div class="image-container">
                 <img src="http://placehold.it/150x150" id="imgProfile" style="width: 250px; height: 250px"
                   class="img-thumbnail" />
                 <div class="middle mt-4">
-                  <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Select Profile" />
-                  <input type="file" style="display: none;" id="profilePicture" name="file" />
+                  <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Select Profile"  />
+
+                  <input type="file" style="display: none;" id="profilePicture"  name="txtprofile" required/ >
+
                   <input type="button" class="btn btn-primary d-none ml-3" id="btnDiscard" value="Discard Changes" />
 
                 </div>
               </div>
-
             
             </div>
-
+          </div>
           </div>
           <div class="col-lg-7 col-md-4 ">
 
@@ -72,48 +109,54 @@
             <div class="form-row">
               <div class="col-6">
                 <label for="" class="text-white">Name</label>
-                <input type="text" class="form-control" placeholder="First name">
+                <input type="text" class="form-control" placeholder="Enter name"name="txtname" required>
               </div>
               <div class="col-6">
                 <label for="" class="text-white">Username</label>
-                <input type="text" class="form-control" placeholder="Last name">
+                <input type="text" class="form-control" placeholder="Enter  Username"name="txtusername">
               </div>
               <div class="col-6 mt-3">
                 <label for="" class="text-white">PhoneNumber</label>
 
-                <input type="text" class="form-control" placeholder="First name">
+                <input type="text" class="form-control" placeholder="Enter Phonenumber"name="txtphone">
               </div>
               <div class="col-6 mt-3"">
                   <label for=""class=" text-white">Email</label>
-                <input type="text" class="form-control" placeholder="Last name">
+                <input type="email" class="form-control" placeholder="Enter Email"name="txtemail">
               </div>
               <div class="col-6 mt-3"">
                   <label for=""class=" text-white">Nrc Number</label>
-                <input type="text" class="form-control" placeholder="Last name">
+                <input type="text" class="form-control" placeholder="Enter Nrcnumber"name="txtnrc">
               </div>
-
+              <div class="col-6 mt-3"">
+                  <label for=""class=" text-white">Password</label>
+                <input type="password" class="form-control" placeholder="Last name"name="txtpass">
+              </div>
+              <div class="col-6 mt-3"">
+                  <label for=""class=" text-white">Address</label>
+                  <input type="text" class="form-control" placeholder="Last name"name="txtaddress">
+              </div>
               <div class="col-6 mt-3">
                 <label for="" class="text-white">Select Gender</label>
                 <br>
+
                 <div class="form-check form-check-inline mt-3 ml-3">
                   <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                    value="option1">
+                    value="male"name="txtmale">
                   <label class="form-check-label text-white" for="inlineRadio1">Male</label>
                 </div>
+
                 <div class="form-check form-check-inline ml-5">
                   <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                    value="option2">
+                    value="female"name="txtfemale">
                   <label class="form-check-label text-white" for="inlineRadio2">Female</label>
                 </div>
               </div>
-              <div class="col-12 mt-3"">
-                  <label for=""class=" text-white">Address</label>
-                <textarea class="form-control" id="exampleFormControlTextarea4" rows="2"></textarea>
-              </div>
+             
             </div>
             <div class="form-group">
               <br>
-              <input type="submit" value="Register" name="btnsave" class="btn btn-primary py-2 px-4 ">
+              <input type="submit" value="Register" name="btnregister" class="btn btn-primary py-2 px-4 ">
             </div>
           </div>
       </form>
