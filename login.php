@@ -49,10 +49,10 @@
   {
           $file = mysqli_fetch_assoc($ret);
           $_SESSION['id']=$file['id'];
-          $_SESSION['name']=$row['name'];
+          $_SESSION['name']=$file['name'];
 
             echo"<script>alert(' Login Success');
-            window.location='a.php';</script>"; 
+            window.location='admin/index.php';</script>"; 
    
   }
     
@@ -65,11 +65,11 @@
         if ($count1)
               {
                    $row=mysqli_fetch_array($ret1);
-                  $customerid=$row['customerid'];
+                  // $customerid=$row['customerid'];
                   // $SESSION['CUID11']=$customerid;
                    $UserName=$row['email'];
                      $uid=$row['id'];
-                    echo"<script>alert('Customer Login Success, Welcome $UserName');window.location='bookinglist.php?id=$uid';</script>";
+                    echo"<script>alert('Customer Login Success, Welcome $UserName');window.location='admin/index.php?id=$uid';</script>";
               }
             else 
             {
