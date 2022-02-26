@@ -33,6 +33,8 @@
   <?php
    include 'common/header.php';
    ?>
+
+   
     <!-- END nav -->
     
     <div class="hero-wrap" style="background-image: url('images/bg.jpg');" data-stellar-background-ratio="0.4">
