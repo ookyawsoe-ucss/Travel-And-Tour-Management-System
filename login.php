@@ -32,6 +32,52 @@
     
   <?php
    include 'common/header.php';
+   session_start();
+   include 'Connection.php'; 
+
+   if(isset($_POST['btnsave']))
+{
+  $name=$_POST['txtname'];
+  $password=$_POST['txtpassword'];
+  $insert=
+  "SELECT * from admin
+  where email='$name'and password='$password'
+   ";
+  $ret=mysqli_query($connect,$insert);
+  $count=mysqli_num_rows($ret);
+  if($count)
+  {
+          $file = mysqli_fetch_assoc($ret);
+          $_SESSION['id']=$file['id'];
+          $_SESSION['name']=$file['name'];
+
+            echo"<script>alert(' Login Success');
+            window.location='admin/index.php';</script>"; 
+   
+  }
+    
+      else 
+       {
+          $insert1="SELECT * from customer where email='$name' and password='$password'";
+         $ret1=mysqli_query($connect,$insert1);
+         $count1=mysqli_num_rows($ret1);
+              
+        if ($count1)
+              {
+                   $row=mysqli_fetch_array($ret1);
+                  // $customerid=$row['customerid'];
+                  // $SESSION['CUID11']=$customerid;
+                   $UserName=$row['email'];
+                     $uid=$row['id'];
+                    echo"<script>alert('Customer Login Success, Welcome $UserName');window.location='admin/index.php?id=$uid';</script>";
+              }
+            else 
+            {
+                    echo"<script>alert('Login Fail');window.location='login.php';</script>";
+            }
+        }
+  
+  }
    ?>
 
    
@@ -56,7 +102,7 @@
 
 	    				<div class="form-group">
 	    					<label for="" class="mb-4" style="font-size: 30px;"class="label"> <h4 class="text-white">Email</h4></label>
-	    					<input type="text" placeholder="Enter User Email" class="form-control" name="txtname" required="" >
+	    					<input type="email" placeholder="Enter User Email" class="form-control" name="txtname" required="" >
 	    				</div>
               <br>
 	    				<div class="form-group">
