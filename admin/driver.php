@@ -30,6 +30,20 @@
     <link href="css/style.css" rel="stylesheet">
     
     <style>
+        .zoom {
+  padding: px;
+  /* background-color: green; */
+  transition: transform .2s;
+  width: 200px;
+  height: 120px;
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.5); 
+}
         button {
             border: none;
             width: 152px;
@@ -174,7 +188,7 @@
                     </defs>
                 </svg>
                 <div class="brand-title">
-                    <h2 class="">HCAS</h2>
+                    <h2 class="">Charlotte</h2>
                 </div>
             </a>
             <div class="nav-control">
@@ -191,7 +205,7 @@
                     <div class="collapse navbar-collapse justify-content-between">
                         <div class="header-left">
                             <div class="dashboard_bar">
-                                Admin Dashboard
+                            Charlotte Admin Dashboard
                             </div>
                         </div>
                         <ul class="navbar-nav header-right">
@@ -263,6 +277,7 @@
                             <span class="nav-text">Driver</span>
                         </a>
                         <ul aria-expanded="false">
+                            <li><a href="registerdriver.php">Add New Driver</a></li>
                             <li><a href="driver.php">Driver List</a></li>
                         </ul>
                     </li>
@@ -272,6 +287,7 @@
                             <i class="fa-solid fa-bus"></i> <span class="nav-text">Bus</span>
                         </a>
                         <ul aria-expanded="false">
+                        <li><a href="registerbus.php">Add New Bus</a></li>
                             <li><a href="bus.php">Bus List</a></li>
                         </ul>
                     </li>
@@ -343,7 +359,7 @@
 
                                         <div class="card-body">
                                             <div class="mb-4 ">
-                                                <a href="#newregister" class="btn btn-primary btn-rounded fs-18">+ Add New</a>
+                                                <a href="registerdriver.php" class="btn btn-primary btn-rounded fs-18">+ Add New</a>
 
 
                                             </div>
@@ -412,158 +428,6 @@
 
                 </div>
 
-                <div class="row " id="newregister">
-                    <div class="col-xl-12 col-xxl-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title"> Register Driver</h4>
-                            </div>
-                            <div class="card-body">
-                                <div id="smartwizard" class="form-wizard order-create">
-                                    <ul class="nav nav-wizard">
-                                        <li><a class="nav-link" href="#wizard_Services">
-                                                <span>1</span>
-                                            </a></li>
-                                        <li><a class="nav-link" href="#wizard_Time">
-                                                <span>2</span>
-                                            </a></li>
-
-                                    </ul>
-                                    <div class="tab-content">
-                                        <form action="" method="post">
-                                            <div id="wizard_Services" class="tab-pane" role="tabpanel">
-                                            
-
-                                                <div class="row">
-
-                                                    <div class="col-12">
-                                                        <div class="card-title mb-4">
-                                                            <div class="d-flex justify-content-start">
-                                                                <div class="image-container">
-                                                                    <img src="http://placehold.it/150x150" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
-                                                                    <div class="middle">
-                                                                        <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Upload" />
-                                                                        <input type="file" style="display: none;" id="profilePicture" name="profile_image" />
-                                                                    </div>
-
-                                                                    <!-- <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" /> -->
-                                                                </div>
-
-                                                                <div class="ml-auto">
-                                                                    <input type="button" class="btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />
-                                                                </div>
-                                                            </div>
-
-
-                                                        </div>
-                                                        <label for="" class="text-danger">
-                                                            <h3 class="text-danger">
-                                                                &nbsp&nbspUpload Profile
-                                                                <h3>
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="col-6">
-                                                        <div class="card-title mb-4">
-
-                                                            <div class="d-flex justify-content-start">
-                                                                <div class="image-container">
-                                                                    <img src="http://placehold.it/150x150" id="imgProfilefls" style="width: 150px; height: 150px" class="img-thumbnail" />
-                                                                    <div class="middle">
-                                                                        <input type="button" class="btn btn-secondary" id="btnChangePicturefls" value="Upload" />
-                                                                        <input type="file" style="display: none;" id="profilePicturefls" name="licence_front" />
-                                                                    </div>
-
-                                                                    <!-- <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" /> -->
-                                                                </div>
-
-
-
-                                                            </div>
-                                                            <div class="ml-auto">
-                                                                <input type="button" class="btn btn-primary d-none" id="btnDiscardfls" value="Discard Changes" />
-                                                            </div>
-
-                                                        </div>
-                                                        <label for="" class="text-primary">
-                                                            <h3 class="text-primary">
-                                                                *Upload License Front Photo
-                                                            </h3>
-                                                        </label>
-                                                        <!-- front ls -->
-                                                    </div>
-                                                    <br>
-                                                    <div class="col-6">
-                                                        <div class="card-title mb-4">
-                                                            <div class="d-flex justify-content-start">
-                                                                <div class="image-container">
-                                                                    <img src="http://placehold.it/150x150" id="imgProfilebls" style="width: 150px; height: 150px" class="img-thumbnail" />
-                                                                    <div class="middle">
-                                                                        <input type="button" class="btn btn-secondary" id="btnChangePicturebls" value="Upload" />
-                                                                        <input type="file" style="display: none;" id="profilePicturebls" name="licence_back" />
-                                                                    </div>
-
-                                                                    <!-- <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" /> -->
-                                                                </div>
-
-
-                                                            </div>
-                                                            <div class="ml-auto">
-                                                                <input type="button" class="btn btn-primary d-none" id="btnDiscardbls" value="Discard Changes" />
-                                                            </div>
-                                                        </div>
-                                                        <label for="">
-                                                            <h3 class="text-primary">
-                                                                *Upload License Back Photo
-                                                                <h3>
-                                                        </label>
-
-                                                    </div>
-                                                    
-
-                                                </div>
-                                            </div>
-                                            <div id="wizard_Time" class="tab-pane" role="tabpanel">
-                                            <div class="row">
-                                                <h2>Driver Information</h2>
-                                                    <div class="col-lg-6 mb-2">
-                                                        <div class="mb-3">
-                                                            <label class="text-label form-label">Name*</label>
-                                                            <input type="text" name="firstName" class="form-control" placeholder="Enter Name" required="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6 mb-2">
-                                                        <div class="mb-3">
-                                                            <label class="text-label form-label"> UserName*</label>
-                                                            <input type="text" name="lastName" class="form-control" placeholder="Enter username" required="">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-lg-6 mb-2">
-                                                        <div class="mb-3">
-                                                            <label class="text-label form-label">Phone Number*</label>
-                                                            <input type="text" name="phoneNumber" class="form-control" placeholder="Enter Phonenumber" required="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12 mb-3">
-                                                        <div class="mb-3">
-                                                            <label class="text-label form-label">Address*</label>
-                                                            <input type="text" name="place" class="form-control" required="" placeholder="Enter Address">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-row-last">
-
-<button id="submitbtn">Register Now</button>
-</div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
             </div>
 
@@ -581,7 +445,14 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                       <div class="row">
+                           <div class="col-6 zoom">
+                           <img class="rounded" width="200" src="../images/International-drivers-permit-singapore-4.jpg" alt="frontlicense">
+                           </div>
+                           <div class="col-6 zoom">
+                           <img class="rounded" width="200" src="../images/International-drivers-permit-singapore-4.jpg" alt="back license">
+                           </div>
+                       </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>

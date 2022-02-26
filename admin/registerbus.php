@@ -277,7 +277,7 @@
                             <span class="nav-text">Driver</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="driver.php">Add New Driver</a></li>
+                            <li><a href="registerdriver.php">Add New Driver</a></li>
                             <li><a href="driver.php">Driver List</a></li>
                         </ul>
                     </li>
@@ -350,85 +350,158 @@
             <!-- row -->
             <div class="container-fluid">
 
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="tab-content">
-                            <div class="tab-pane fade active show" id="AllStatus">
-                                <div class="col-12">
-                                    <div class="card">
+              
 
-                                        <div class="card-body">
-                                            <div class="mb-4 ">
-                                                <a href="registerbus.php" class="btn btn-primary btn-rounded fs-18">+ Add New</a>
+                <div class="row " id="newregister">
+                    <div class="col-xl-12 col-xxl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title"> Register Driver</h4>
+                            </div>
+                            <div class="card-body">
+                                <div id="smartwizard" class="form-wizard order-create">
+                                    <ul class="nav nav-wizard">
+                                        <li><a class="nav-link" href="#wizard_Services">
+                                                <span>1</span>
+                                            </a></li>
+                                        <li><a class="nav-link" href="#wizard_Time">
+                                                <span>2</span>
+                                            </a></li>
 
+                                    </ul>
+                                    <div class="tab-content">
+                                        <form action="" method="post" enctype="multipart/form-data" >
+                                            <div id="wizard_Services" class="tab-pane" role="tabpanel">
+                                            
 
-                                            </div>
-                                            <div class="table-responsive">
-                                                <table id="example3" class="display" style="min-width: 845px">
-                                                    <thead>
-                                                        <tr>
-                                                           
-                                                            <th>No</th>
-                                                            <th>Bus Name</th>
-                                                            <th>License No</th>
-                                                            <th>Car Type</th>
-                                                            
+                                                <div class="row">
 
-                                                            <th>Add Date</th>
+                                                    <div class="col-12">
+                                                        <div class="card-title mb-4">
+                                                            <div class="d-flex justify-content-start">
+                                                                <div class="image-container">
+                                                                    <img src="../images/busimg.webp" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
+                                                                    <div class="middle">
+                                                                        <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Upload" />
+                                                                        <input type="file" style="display: none;" id="profilePicture" name="profile_image" />
+                                                                    </div>
 
-                                                            <th>Action</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-
-
-
-
-                                                        <tr>
-                                                            
-                                                            <td>1</td>
-                                                            <td>BMW</td>
-                                                            <td>Vip</td>
-                                                            <td>123123</td>
-                                                           
-
-                                                            <td>2008/11/28</td>
-
-
-                                                            <td>
-                                                                <div class="d-flex">
-                                                                    <a href="#" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModalCenter"> <b>Bus Images</b>
-                                                                    </a>
-                                                                    <!-- <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Modal centered</button> -->
-                                                                    &nbsp;
-                                                                    <a href="#" class="btn btn-danger "><b>Delete</b>
-                                                                    </a>
+                                                                    <!-- <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" /> -->
                                                                 </div>
-                                                            </td>
-                                                        </tr>
+
+                                                                <div class="ml-auto">
+                                                                    <input type="button" class="btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+                                                        <label for="" class="text-danger">
+                                                            <a href="">
+                                                            <h3 class="text-danger">
+                                                                &nbsp&nbspUpload Bus Profile
+                                                                <h3>
+    </a>
+    
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <div class="card-title mb-4">
+
+                                                            <div class="d-flex justify-content-start">
+                                                                <div class="image-container">
+                                                                    <img src="../images/side.png" id="imgProfilefls" style="width: 150px; height: 150px" class="img-thumbnail" />
+                                                                    <div class="middle">
+                                                                        <input type="button" class="btn btn-secondary" id="btnChangePicturefls" value="Upload" />
+                                                                        <input type="file" style="display: none;" id="profilePicturefls" name="licence_front" />
+                                                                    </div>
+
+                                                                    <!-- <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" /> -->
+                                                                </div>
 
 
 
+                                                            </div>
+                                                            <div class="ml-auto">
+                                                                <input type="button" class="btn btn-primary d-none" id="btnDiscardfls" value="Discard Changes" />
+                                                            </div>
+
+                                                        </div>
+                                                        <label for="" class="text-primary">
+                                                            <h3 class="text-primary">
+                                                                *Upload Bus Side Photo
+                                                            </h3>
+                                                        </label>
+                                                        <!-- front ls -->
+                                                    </div>
+                                                    <br>
+                                                    <div class="col-6">
+                                                        <div class="card-title mb-4">
+                                                            <div class="d-flex justify-content-start">
+                                                                <div class="image-container">
+                                                                    <img src="../images/inside.webp" id="imgProfilebls" style="width: 150px; height: 150px" class="img-thumbnail" />
+                                                                    <div class="middle">
+                                                                        <input type="button" class="btn btn-secondary" id="btnChangePicturebls" value="Upload" />
+                                                                        <input type="file" style="display: none;" id="profilePicturebls" name="licence_back" />
+                                                                    </div>
+
+                                                                    <!-- <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" /> -->
+                                                                </div>
 
 
+                                                            </div>
+                                                            <div class="ml-auto">
+                                                                <input type="button" class="btn btn-primary d-none" id="btnDiscardbls" value="Discard Changes" />
+                                                            </div>
+                                                        </div>
+                                                        <label for="">
+                                                            <h3 class="text-primary">
+                                                                *Upload Bus Inside Photo
+                                                                <h3>
+                                                        </label>
 
+                                                    </div>
+                                                    
 
-                                                    </tbody>
-                                                </table>
+                                                </div>
                                             </div>
-                                        </div>
+                                            <div id="wizard_Time" class="tab-pane" role="tabpanel">
+                                            <div class="row">
+                                                <h2>Driver Information</h2>
+                                                    <div class="col-lg-6 mb-2">
+                                                        <div class="mb-3">
+                                                            <label class="text-label form-label">Car Name*</label>
+                                                            <input type="text" name="firstName" class="form-control" placeholder="Enter Car Name" required="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 mb-2">
+                                                        <div class="mb-3">
+                                                            <label class="text-label form-label"> License No*</label>
+                                                            <input type="text" name="lastName" class="form-control" placeholder="Enter License No" required="">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6 mb-2">
+                                                        <div class="mb-3">
+                                                            <label class="text-label form-label">Car Type*</label>
+                                                            <input type="text" name="phoneNumber" class="form-control" placeholder="Enter Car Type" required="">
+                                                        </div>
+                                                    </div>
+                                                   
+                                                    <div class="form-row-last">
+
+<button id="submitbtn" name="btnregister">Register Now</button>
+</div>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-
-
-
                         </div>
                     </div>
-
                 </div>
-
-               
 
             </div>
 

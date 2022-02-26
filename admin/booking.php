@@ -51,7 +51,7 @@
             Nav header start
         ***********************************-->
 		<div class="nav-header">
-            <a href="index.php" class="brand-logo">
+            <a href="index.html" class="brand-logo">
 				<svg class="logo-abbr" width="55" height="55" viewbox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path fill-rule="evenodd" clip-rule="evenodd" d="M27.5 0C12.3122 0 0 12.3122 0 27.5C0 42.6878 12.3122 55 27.5 55C42.6878 55 55 42.6878 55 27.5C55 12.3122 42.6878 0 27.5 0ZM28.0092 46H19L19.0001 34.9784L19 27.5803V24.4779C19 14.3752 24.0922 10 35.3733 10V17.5571C29.8894 17.5571 28.0092 19.4663 28.0092 24.4779V27.5803H36V34.9784H28.0092V46Z" fill="url(#paint0_linear)"></path>
 					<defs>
@@ -92,7 +92,7 @@
 								<div class="dropdown-menu dropdown-menu-end">
 								
 								
-									<a href="" class="dropdown-item ai-icon">
+									<a href="page-error-404.html" class="dropdown-item ai-icon">
 										<svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
 										<span class="ms-2">Logout </span>
 									</a>
@@ -106,52 +106,83 @@
         <!--**********************************
             Header end ti-comment-alt
         ***********************************-->
-
-        <!--**********************************
-            Sidebar start
-        ***********************************-->
-        <div class="dlabnav">
+		<div class="dlabnav">
             <div class="dlabnav-scroll">
-				<ul class="metismenu" id="menu">
+                <ul class="metismenu" id="menu">
                     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-							<i class="fas fa-home"></i>
-							<span class="nav-text">Dashboard</span>
-						</a>
+                            <i class="fas fa-home"></i>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
                         <ul aria-expanded="false">
-							<li><a href="index.php">Dashboard </a></li>
-						
-						
-						
-						</ul>
+                            <li><a href="index.php">Dashboard </a></li>
 
-                    </li>	                 
-                   <br><hr>
+
+
+                        </ul>
+
+                    </li>
+                    <br>
+                    <hr>
                     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-							<i class="fas fa-table"></i>
-							<span class="nav-text">Schedule</span>
-						</a>
+                            <i class="fas fa-table"></i>
+                            <span class="nav-text">Schedule</span>
+                        </a>
                         <ul aria-expanded="false">
                             <li><a href="schedule.php">Schedule List</a></li>
                         </ul>
                     </li>
-				
-				<br><hr>
-				<li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-				<i class="fas fa-user-tie"></i>				
-					<span class="nav-text">Driver</span>
-				</a>
-				<ul aria-expanded="false">
-					<li><a href="driver.php">Driver List</a></li>
-				</ul>
-			</li>
-			<br><hr>
-			<li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-			<i class="fa-solid fa-bus"></i>				<span class="nav-text">Bus</span>
-			</a>
-			<ul aria-expanded="false">
-				<li><a href="bus.php">Bus List</a></li>
-			</ul>
-		</li>
+
+                    <br>
+                    <hr>
+                    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                            <i class="fas fa-user-tie"></i>
+                            <span class="nav-text">Driver</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="registerdriver.php">Add New Driver</a></li>
+                            <li><a href="driver.php">Driver List</a></li>
+                        </ul>
+                    </li>
+                    <br>
+                    <hr>
+                    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                            <i class="fa-solid fa-bus"></i> <span class="nav-text">Bus</span>
+                        </a>
+                        <ul aria-expanded="false">
+                        <li><a href="registerbus.php">Add New Bus</a></li>
+                            <li><a href="bus.php">Bus List</a></li>
+                        </ul>
+                    </li>
+                    <br>
+                    <hr>
+                    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                            <i class="fa-solid fa-list-ul"></i> <span class="nav-text">Booking</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="booking.php">Booking List</a></li>
+                        </ul>
+                    </li>
+                    <br>
+                    <hr>
+                    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                            <i class="fa-solid fa-user"></i> <span class="nav-text">User</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="user.phpl">User List</a></li>
+
+
+                        </ul>
+                    </li>
+                </ul>
+
+
+
+            </div>
+        </div>
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+       
 		<br><hr>
 			<li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
 			<i class="fa-solid fa-list-ul"></i>				<span class="nav-text">Booking</span>
@@ -165,7 +196,7 @@
 					<i class="fa-solid fa-user"></i>						<span class="nav-text">User</span>
 					</a>
 					<ul aria-expanded="false">
-						<li><a href="user.phpl">User List</a></li>
+						<li><a href="user.php">User List</a></li>
 												
 
 					</ul>
@@ -210,10 +241,7 @@
 			<div class="container-fluid">
 				<div class="project-page d-flex justify-content-between align-items-center flex-wrap">
 	
-					<div class="mb-4">
-						<a href="javascript:void(0);" class="btn btn-primary btn-rounded fs-18">+ New User</a>
-						
-					</div>
+					
 				</div>	
 				<div class="row">
 					<div class="col-xl-12">
@@ -227,15 +255,15 @@
                                                 <table id="example3" class="display" style="min-width: 845px">
                                                     <thead>
                                                         <tr>
-                                                            <th></th>
-                                                            <th>Name</th>
-                                                            <th>Username</th>
-                                                            <th>Phone</th>
-                                                            <th>Email</th>
-                                                            <th>Degree</th>
-                                                            <th>Specialist</th>
-                                                            <th>Joining Date</th>
-                                                            <th>Status</th>
+                                                            <th>No</th>
+                                                            <th>Start Date</th>
+                                                            <th>Customer Name</th>
+                                                            <th>Number Of Seats</th>
+                                                            <th>Package Name</th>
+                                                            <th>Price</th>
+                                                            <th>Phone Number</th>
+                                                            <th>Booking Date</th>
+                                                       
                                                             <th>Action</th>
                                                         </tr>
                                                     </thead>
@@ -245,21 +273,18 @@
                                                        
                                                        
                                                         <tr>
-                                                            <td><img class="rounded-circle" width="35" src="images/profile/small/pic5.jpg" alt=""></td>
-                                                            <td>Kyaw SOe</td>
-                                                            <td>LU Lu aung</td>
-                                                            <td>0912312041</td>
-                                                            <td>a@gmail.com</td>
-                                                            <td>MBBS</td>
-                                                            <td>Heart</td>
+                                                            <td>1</td>
                                                             <td>2008/11/28</td>
-                                                            <td><span class="badge light badge-danger">Panding</span></td>
+                                                            <td>LU Lu aung</td>
+                                                            <td>2</td>
+                                                            <td>Yangon,Mandalay,Pol</td>
+                                                            <td>100000</td>
+                                                            <td>012312445</td>
+                                                            <td>2008/11/28</td>
 
                                                             <td>
                                                                 <div class="d-flex">
-                                                                    <a href="#" class="btn btn-primary "> <b>Confrm</b>
-                                                                    </a>
-                                                                    &nbsp;
+                                                                    
                                                                     <a href="#" class="btn btn-danger "><b>Delete</b>
                                                                     </a>
                                                                 </div>
@@ -279,128 +304,7 @@
                                     </div>
                                 </div>
 							</div>
-							<div class="tab-pane fade" id="OnProgress">
-                                <div class="col-12">
-                                    <div class="card">
-                                       
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table id="example3" class="display" style="min-width: 845px">
-                                                    <thead>
-                                                        <tr>
-                                                            <th></th>
-                                                            <th>Name</th>
-                                                            <th>Username</th>
-                                                            <th>Phone</th>
-                                                            <th>Email</th>
-                                                           <th>Degree</th>
-                                                           <th>Specialist</th>
-                                                            <th>Joining Date</th>
-                                                            <th>Status</th>
-                                                            <th>Action</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                       
-                                                       
-                                                       
-                                                       
-                                                        <tr>
-                                                            <td><img class="rounded-circle" width="35" src="images/profile/small/pic5.jpg" alt=""></td>
-                                                            <td>Kyaw SOe</td>
-                                                            <td>LU Lu aung</td>
-                                                            <td>0912312041</td>
-                                                            <td>a@gmail.com</td>
-                                                            <td>MBBS</td>
-                                                            <td>Heart</td>
-                                                            <td>2008/11/28</td>
-                                                            <td><span class="badge light badge-success"><b>Ok</b></span></td>
-
-                                                            <td>
-                                                                <div class="d-flex">
-                                                                    <a href="#" class="btn btn-primary "> <b>viewprofile</b>
-                                                                    </a>
-                                                                    &nbsp;
-                                                                    <a href="#" class="btn btn-danger "><b>Delete</b>
-                                                                    </a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                     
-                                                       
-                                                      
-                                                        
-                                                       
-                                                       
-                                                      
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-							</div>
-							<div class="tab-pane fade" id="Pending">
-                                <div class="col-12">
-                                    <div class="card">
-                                       
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table id="example3" class="display" style="min-width: 845px">
-                                                    <thead>
-                                                        <tr>
-                                                            <th></th>
-                                                            <th>Name</th>
-                                                            <th>Username</th>
-                                                            <th>Phone</th>
-                                                            <th>Email</th>
-                                                           <th>Degree</th>
-                                                           <th>Specialist</th>
-                                                            <th>Joining Date</th>
-                                                            <th>Status</th>
-                                                            <th>Action</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                       
-                                                       
-                                                       
-                                                       
-                                                        <tr>
-                                                            <td><img class="rounded-circle" width="35" src="images/profile/small/pic5.jpg" alt=""></td>
-                                                            <td>Kyaw SOe</td>
-                                                            <td>LU Lu aung</td>
-                                                            <td>0912312041</td>
-                                                            <td>a@gmail.com</td>
-                                                            <td>MBBS</td>
-                                                            <td>Heart</td>
-                                                            <td>2008/11/28</td>
-                                                            <td><span class="badge light badge-success"><b>Cancel</b></span></td>
-                                                            <td>
-                                                                <div class="d-flex">
-                                                                    <a href="#" class="btn btn-warning "> <b>Confrm</b>
-                                                                    </a>
-                                                                    &nbsp;
-                                                                    <a href="#" class="btn btn-danger "><b>Delete</b>
-                                                                    </a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                     
-                                                       
-                                                      
-                                                        
-                                                       
-                                                       
-                                                      
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-							</div>
-							
+					
 						</div>
 					</div>
 					

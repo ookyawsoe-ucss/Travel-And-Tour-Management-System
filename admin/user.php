@@ -112,69 +112,76 @@
         ***********************************-->
         <div class="dlabnav">
             <div class="dlabnav-scroll">
-				<ul class="metismenu" id="menu">
+                <ul class="metismenu" id="menu">
                     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-							<i class="fas fa-home"></i>
-							<span class="nav-text">Dashboard</span>
-						</a>
+                            <i class="fas fa-home"></i>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
                         <ul aria-expanded="false">
-							<li><a href="index.php">Dashboard </a></li>
-						
-						
-						
-						</ul>
+                            <li><a href="index.php">Dashboard </a></li>
 
-                    </li>	                 
-                   <br><hr>
+
+
+                        </ul>
+
+                    </li>
+                    <br>
+                    <hr>
                     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-							<i class="fas fa-table"></i>
-							<span class="nav-text">Schedule</span>
-						</a>
+                            <i class="fas fa-table"></i>
+                            <span class="nav-text">Schedule</span>
+                        </a>
                         <ul aria-expanded="false">
                             <li><a href="schedule.php">Schedule List</a></li>
                         </ul>
                     </li>
-				
-				<br><hr>
-				<li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-				<i class="fas fa-user-tie"></i>				
-					<span class="nav-text">Driver</span>
-				</a>
-				<ul aria-expanded="false">
-					<li><a href="driver.php">Driver List</a></li>
-				</ul>
-			</li>
-			<br><hr>
-			<li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-			<i class="fa-solid fa-bus"></i>				<span class="nav-text">Bus</span>
-			</a>
-			<ul aria-expanded="false">
-				<li><a href="bus.php">Bus List</a></li>
-			</ul>
-		</li>
-		<br><hr>
-			<li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-			<i class="fa-solid fa-list-ul"></i>				<span class="nav-text">Booking</span>
-			</a>
-			<ul aria-expanded="false">
-				<li><a href="booking.php">Booking List</a></li>
-			</ul>
-		</li>
-		<br><hr>
-					<li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-					<i class="fa-solid fa-user"></i>						<span class="nav-text">User</span>
-					</a>
-					<ul aria-expanded="false">
-						<li><a href="user.phpl">User List</a></li>
-												
 
-					</ul>
-				</li>    
+                    <br>
+                    <hr>
+                    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                            <i class="fas fa-user-tie"></i>
+                            <span class="nav-text">Driver</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="registerdriver.php">Add New Driver</a></li>
+                            <li><a href="driver.php">Driver List</a></li>
+                        </ul>
+                    </li>
+                    <br>
+                    <hr>
+                    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                            <i class="fa-solid fa-bus"></i> <span class="nav-text">Bus</span>
+                        </a>
+                        <ul aria-expanded="false">
+                        <li><a href="registerbus.php">Add New Bus</a></li>
+                            <li><a href="bus.php">Bus List</a></li>
+                        </ul>
+                    </li>
+                    <br>
+                    <hr>
+                    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                            <i class="fa-solid fa-list-ul"></i> <span class="nav-text">Booking</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="booking.php">Booking List</a></li>
+                        </ul>
+                    </li>
+                    <br>
+                    <hr>
+                    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                            <i class="fa-solid fa-user"></i> <span class="nav-text">User</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="user.phpl">User List</a></li>
+
+
+                        </ul>
+                    </li>
                 </ul>
-			
-				
-				
-			</div>
+
+
+
+            </div>
         </div>
         <!--**********************************
             Sidebar end
@@ -210,10 +217,7 @@
 			<div class="container-fluid">
 				<div class="project-page d-flex justify-content-between align-items-center flex-wrap">
 	
-					<div class="mb-4">
-						<a href="javascript:void(0);" class="btn btn-primary btn-rounded fs-18">+ New User</a>
-						
-					</div>
+					
 				</div>	
 				<div class="row">
 					<div class="col-xl-12">
@@ -232,10 +236,10 @@
                                                             <th>Username</th>
                                                             <th>Phone</th>
                                                             <th>Email</th>
-                                                            <th>Degree</th>
-                                                            <th>Specialist</th>
+                                                            <th>Address</th>
+                                                            <th>Nrc Number</th>
                                                             <th>Joining Date</th>
-                                                            <th>Status</th>
+                                                       
                                                             <th>Action</th>
                                                         </tr>
                                                     </thead>
@@ -253,13 +257,10 @@
                                                             <td>MBBS</td>
                                                             <td>Heart</td>
                                                             <td>2008/11/28</td>
-                                                            <td><span class="badge light badge-danger">Panding</span></td>
 
                                                             <td>
                                                                 <div class="d-flex">
-                                                                    <a href="#" class="btn btn-primary "> <b>Confrm</b>
-                                                                    </a>
-                                                                    &nbsp;
+                                                                    
                                                                     <a href="#" class="btn btn-danger "><b>Delete</b>
                                                                     </a>
                                                                 </div>
