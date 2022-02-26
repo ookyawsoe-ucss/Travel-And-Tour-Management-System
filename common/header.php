@@ -11,7 +11,22 @@
               <li class="nav-item"><a href="package.php" class="nav-link">Packages</a></li>
 	          <li class="nav-item"><a href="about.php" class="nav-link">About</a></li>
 	          <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
-              <li class="nav-item"><a href="login.php" class="nav-link">Login</a></li>
+			 <?php
+			  session_start();
+			  $name = $_SESSION['name'] ?? "";
+			  $profile_image = $_SESSION['profile_image'] ?? "";
+			  if($name){ ?>
+				
+				 
+			  	
+				 <li class="nav-item"><a href="logout.php" class="nav-link"><img src="<?php  echo "userProfile/$profile_image"?>" alt="profile image" width="40px" height="35px" class="rounded-pill">&nbsp;&nbsp;<?php  echo "$name"?> </a></li>
+				
+			 <?php }else{ ?>
+				  <li class="nav-item"><a href="login.php" class="nav-link">Login</a></li>
+			<?php  }
+			 ?>
+
+              
 
 	        </ul>
 	      </div>

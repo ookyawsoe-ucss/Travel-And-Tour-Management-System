@@ -39,7 +39,7 @@
 
   <?php
    include 'common/header.php';
-   session_start();
+  //  session_start();
    include 'Connection.php'; 
 
 if (isset($_POST['btnregister']))
@@ -52,6 +52,7 @@ if (isset($_POST['btnregister']))
   $nrc=$_POST['txtnrc'];  
   $pass=$_POST['txtpass'];  
   $address=$_POST['txtaddress']; 
+  $gender = $_POST['gender'];
   $image=$_FILES['txtprofile']['name'];
    $folder="userProfile/";
    if($image)
@@ -61,7 +62,7 @@ if (isset($_POST['btnregister']))
    }
    
 
-  $insert="insert into customer (name,username,email,address,phone,nrc_no,profile_image,password) values ('$name','$username','$email','$address','$phone','$nrc','$image','$pass')";
+  $insert="insert into customer (name,username,email,address,gender,phone,nrc_no,profile_image,password) values ('$name','$username','$email','$address','$gender','$phone','$nrc','$image','$pass')";
   $ret=mysqli_query($connect,$insert);
 
   if($ret)
@@ -141,14 +142,14 @@ if (isset($_POST['btnregister']))
                 <br>
 
                 <div class="form-check form-check-inline mt-3 ml-3">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                    value="male"name="txtmale">
+                  <input class="form-check-input" type="radio" name="gender" id="inlineRadio1"
+                    value="Male" checked>
                   <label class="form-check-label text-white" for="inlineRadio1">Male</label>
                 </div>
 
                 <div class="form-check form-check-inline ml-5">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                    value="female"name="txtfemale">
+                  <input class="form-check-input" type="radio" name="gender" id="inlineRadio2"
+                    value="Female">
                   <label class="form-check-label text-white" for="inlineRadio2">Female</label>
                 </div>
               </div>

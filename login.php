@@ -31,8 +31,9 @@
   <body>
     
   <?php
+
    include 'common/header.php';
-   session_start();
+  
    include 'Connection.php'; 
 
    if(isset($_POST['btnsave']))
@@ -66,10 +67,13 @@
               {
                    $row=mysqli_fetch_array($ret1);
                   // $customerid=$row['customerid'];
-                  // $SESSION['CUID11']=$customerid;
-                   $UserName=$row['email'];
+                  //$_SESSION['CUID11']=$customerid;
+                  $_SESSION['name'] = $row['name'];
+                  $_SESSION['profile_image'] = $row['profile_image'];
+                  $profile_image = $row['profile_image'];
+                  $name = $row['name'];
                      $uid=$row['id'];
-                    echo"<script>alert('Customer Login Success, Welcome $UserName');window.location='admin/index.php?id=$uid';</script>";
+                    echo"<script>alert('Customer Login Success, Welcome $name');window.location='index.php?id=$uid';</script>";
               }
             else 
             {
