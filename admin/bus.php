@@ -306,7 +306,7 @@
                             <i class="fa-solid fa-user"></i> <span class="nav-text">User</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="user.phpl">User List</a></li>
+                            <li><a href="user.php">User List</a></li>
 
 
                         </ul>
