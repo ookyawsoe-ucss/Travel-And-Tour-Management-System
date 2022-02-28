@@ -158,7 +158,59 @@
 </head>
 
 <body>
+<?php 
+	
+include '../Connection.php'; 
 
+if (isset($_POST['btnregister']))
+{
+   $name=$_POST['name'];
+   $username=$_POST['username'];  
+  $phone=$_POST['phoneNumber'];
+  $address=$_POST['address'];
+
+//   $sets=$_POST{'txtsets'};
+  $image=$_FILES['profile_image']['name'];
+   $folder="../driverProfile/";
+   if($image)
+   {
+    $filename=$folder."".$image;
+    $copy=copy($_FILES['profile_image']['tmp_name'],$filename);
+   }
+   
+   $sideimage=$_FILES['licence_front']['name'];
+   $folder="../driverProfile/";
+
+   if($sideimage)
+   {
+    $filename=$folder."".$sideimage;
+    $copy=copy($_FILES['licence_front']['tmp_name'],$filename);
+   }
+
+   $insideimage=$_FILES['licence_back']['name'];
+   $folder="../driverProfile/";
+   
+   if($insideimage)
+   {
+    $filename=$folder."".$insideimage;
+    $copy=copy($_FILES['licence_back']['tmp_name'],$filename);
+   }
+
+  $insert="insert into driver (name,username,phone,address,profile_image,l_front,l_back) values ('$name','$username','$phone','$address','$image','$sideimage','$insideimage')";
+  $ret=mysqli_query($connect,$insert);
+
+  if($ret)
+  {
+    echo"<script>alert('Successful Added ');</script>";
+     echo"<script>window.location='driver.php';</script>";
+  }
+  else
+  {
+    echo mysqli_error($connect);
+  }
+}
+			
+ ?>
     <!--*******************
         Preloader start
     ********************-->
@@ -306,7 +358,7 @@
                             <i class="fa-solid fa-user"></i> <span class="nav-text">User</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="user.phpl">User List</a></li>
+                            <li><a href="user.php">User List</a></li>
 
 
                         </ul>
@@ -468,13 +520,13 @@
                                                     <div class="col-lg-6 mb-2">
                                                         <div class="mb-3">
                                                             <label class="text-label form-label">Name*</label>
-                                                            <input type="text" name="firstName" class="form-control" placeholder="Enter Name" required="">
+                                                            <input type="text" name="name" class="form-control" placeholder="Enter Name" required="">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 mb-2">
                                                         <div class="mb-3">
                                                             <label class="text-label form-label"> UserName*</label>
-                                                            <input type="text" name="lastName" class="form-control" placeholder="Enter username" required="">
+                                                            <input type="text" name="username" class="form-control" placeholder="Enter username" required="">
                                                         </div>
                                                     </div>
 
@@ -487,12 +539,12 @@
                                                     <div class="col-lg-12 mb-3">
                                                         <div class="mb-3">
                                                             <label class="text-label form-label">Address*</label>
-                                                            <input type="text" name="place" class="form-control" required="" placeholder="Enter Address">
+                                                            <input type="text" name="address" class="form-control" required="" placeholder="Enter Address">
                                                         </div>
                                                     </div>
                                                     <div class="form-row-last">
 
-<button id="submitbtn">Register Now</button>
+<button id="submitbtn" name="btnregister">Register Now</button>
 </div>
                                                 </div>
                                             </div>
