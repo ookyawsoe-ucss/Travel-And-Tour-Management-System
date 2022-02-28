@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Autoroad - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Travel and Tour Management System</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -26,14 +26,14 @@
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
-      .warpp .img {
+      /* .warpp .img {
     width: 300px;
     height: 300px; !important
     position: absolute;
     margin: 0 auto;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
-}
+} */
     </style>
   </head>
   <body>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
 <html lang="en">
-
+ 
 <head>
 
-  <title>BHW - Bus Company </title>
+  <title>Travel and Tour Management System | register </title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
