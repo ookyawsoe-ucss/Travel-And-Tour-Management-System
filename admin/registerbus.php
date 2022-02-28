@@ -158,7 +158,59 @@
 </head>
 
 <body>
+    
+<?php 
+	
+include '../Connection.php'; 
 
+if (isset($_POST['btnregister']))
+{
+   $name=$_POST['cname'];
+   $lsno=$_POST['clicense'];  
+  $type=$_POST['ctype'];
+  
+//   $sets=$_POST{'txtsets'};
+  $image=$_FILES['profile_image']['name'];
+   $folder="../carImage/";
+   if($image)
+   {
+    $filename=$folder."".$image;
+    $copy=copy($_FILES['profile_image']['tmp_name'],$filename);
+   }
+   
+   $sideimage=$_FILES['licence_front']['name'];
+   $folder="../carImage/";
+
+   if($sideimage)
+   {
+    $filename=$folder."".$sideimage;
+    $copy=copy($_FILES['licence_front']['tmp_name'],$filename);
+   }
+
+   $insideimage=$_FILES['licence_back']['name'];
+   $folder="../carImage/";
+   
+   if($insideimage)
+   {
+    $filename=$folder."".$insideimage;
+    $copy=copy($_FILES['licence_back']['tmp_name'],$filename);
+   }
+
+  $insert="insert into bus (car_name,car_license_no	,car_type,car_front_image,car_inside_image,car_side_image) values ('$name','$lsno','$type','$image','$sideimage','$insideimage')";
+  $ret=mysqli_query($connect,$insert);
+
+  if($ret)
+  {
+    echo"<script>alert('Successful Added ');</script>";
+     echo"<script>window.location='bus.php';</script>";
+  }
+  else
+  {
+    echo mysqli_error($connect);
+  }
+}
+			
+ ?>
     <!--*******************
         Preloader start
     ********************-->
@@ -306,7 +358,7 @@
                             <i class="fa-solid fa-user"></i> <span class="nav-text">User</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="user.phpl">User List</a></li>
+                            <li><a href="user.php">User List</a></li>
 
 
                         </ul>
@@ -370,7 +422,7 @@
 
                                     </ul>
                                     <div class="tab-content">
-                                        <form action="" method="post" enctype="multipart/form-data" >
+                                        <form action="registerbus.php" method="post" enctype="multipart/form-data" >
                                             <div id="wizard_Services" class="tab-pane" role="tabpanel">
                                             
 
@@ -472,20 +524,20 @@
                                                     <div class="col-lg-6 mb-2">
                                                         <div class="mb-3">
                                                             <label class="text-label form-label">Car Name*</label>
-                                                            <input type="text" name="firstName" class="form-control" placeholder="Enter Car Name" required="">
+                                                            <input type="text" name="cname" class="form-control" placeholder="Enter Car Name" required="">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 mb-2">
                                                         <div class="mb-3">
                                                             <label class="text-label form-label"> License No*</label>
-                                                            <input type="text" name="lastName" class="form-control" placeholder="Enter License No" required="">
+                                                            <input type="text" name="clicense" class="form-control" placeholder="Enter License No" required="">
                                                         </div>
                                                     </div>
 
                                                     <div class="col-lg-6 mb-2">
                                                         <div class="mb-3">
                                                             <label class="text-label form-label">Car Type*</label>
-                                                            <input type="text" name="phoneNumber" class="form-control" placeholder="Enter Car Type" required="">
+                                                            <input type="text" name="ctype" class="form-control" placeholder="Enter Car Type" required="">
                                                         </div>
                                                     </div>
                                                    

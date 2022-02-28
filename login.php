@@ -49,8 +49,8 @@
   if($count)
   {
           $file = mysqli_fetch_assoc($ret);
-          $_SESSION['id']=$file['id'];
-          $_SESSION['name']=$file['name'];
+          // $_SESSION['id']=$file['id'];
+          // $_SESSION['name']=$file['name'];
 
             echo"<script>alert(' Login Success');
             window.location='admin/index.php';</script>"; 

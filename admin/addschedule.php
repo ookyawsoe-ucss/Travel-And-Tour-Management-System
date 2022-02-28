@@ -158,7 +158,59 @@
 </head>
 
 <body>
+<?php 
+	
+include '../Connection.php'; 
 
+if (isset($_POST['btnregister']))
+{
+   $name=$_POST['name'];
+   $username=$_POST['username'];  
+  $phone=$_POST['phoneNumber'];
+  $address=$_POST['address'];
+
+//   $sets=$_POST{'txtsets'};
+  $image=$_FILES['profile_image']['name'];
+   $folder="../driverProfile/";
+   if($image)
+   {
+    $filename=$folder."".$image;
+    $copy=copy($_FILES['profile_image']['tmp_name'],$filename);
+   }
+   
+   $sideimage=$_FILES['licence_front']['name'];
+   $folder="../driverProfile/";
+
+   if($sideimage)
+   {
+    $filename=$folder."".$sideimage;
+    $copy=copy($_FILES['licence_front']['tmp_name'],$filename);
+   }
+
+   $insideimage=$_FILES['licence_back']['name'];
+   $folder="../driverProfile/";
+   
+   if($insideimage)
+   {
+    $filename=$folder."".$insideimage;
+    $copy=copy($_FILES['licence_back']['tmp_name'],$filename);
+   }
+
+  $insert="insert into driver (name,username,phone,address,profile_image,l_front,l_back) values ('$name','$username','$phone','$address','$image','$sideimage','$insideimage')";
+  $ret=mysqli_query($connect,$insert);
+
+  if($ret)
+  {
+    echo"<script>alert('Successful Added ');</script>";
+     echo"<script>window.location='driver.php';</script>";
+  }
+  else
+  {
+    echo mysqli_error($connect);
+  }
+}
+			
+ ?>
     <!--*******************
         Preloader start
     ********************-->
@@ -245,79 +297,78 @@
             Sidebar start
         ***********************************-->
         <div class="dlabnav">
-			<div class="dlabnav-scroll">
-				<ul class="metismenu" id="menu">
-					<li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-							<i class="fas fa-home"></i>
-							<span class="nav-text">Dashboard</span>
-						</a>
-						<ul aria-expanded="false">
-							<li><a href="index.php">Dashboard </a></li>
+            <div class="dlabnav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                            <i class="fas fa-home"></i>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="index.php">Dashboard </a></li>
 
 
 
-						</ul>
+                        </ul>
 
-					</li>
-					<br>
-					<hr>
-					<li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-							<i class="fas fa-table"></i>
-							<span class="nav-text">Schedule</span>
-						</a>
-						<ul aria-expanded="false">
-							<li><a href="addschedule.php">Add New Schedule</a></li>
-							<li><a href="schedule.php">Schedule List</a></li>
-						</ul>
-					</li>
+                    </li>
+                    <br>
+                    <hr>
+                    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                            <i class="fas fa-table"></i>
+                            <span class="nav-text">Schedule</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="schedule.php">Schedule List</a></li>
+                        </ul>
+                    </li>
 
-					<br>
-					<hr>
-					<li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-							<i class="fas fa-user-tie"></i>
-							<span class="nav-text">Driver</span>
-						</a>
-						<ul aria-expanded="false">
-							<li><a href="registerdriver.php">Add New Driver</a></li>
-							<li><a href="driver.php">Driver List</a></li>
-						</ul>
-					</li>
-					<br>
-					<hr>
-					<li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-							<i class="fa-solid fa-bus"></i> <span class="nav-text">Bus</span>
-						</a>
-						<ul aria-expanded="false">
-							<li><a href="registerbus.php">Add New Bus</a></li>
-							<li><a href="bus.php">Bus List</a></li>
-						</ul>
-					</li>
-					<br>
-					<hr>
-					<li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-							<i class="fa-solid fa-list-ul"></i> <span class="nav-text">Booking</span>
-						</a>
-						<ul aria-expanded="false">
-							<li><a href="booking.php">Booking List</a></li>
-						</ul>
-					</li>
-					<br>
-					<hr>
-					<li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-							<i class="fa-solid fa-user"></i> <span class="nav-text">User</span>
-						</a>
-						<ul aria-expanded="false">
-							<li><a href="user.php">User List</a></li>
-
-
-						</ul>
-					</li>
-				</ul>
+                    <br>
+                    <hr>
+                    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                            <i class="fas fa-user-tie"></i>
+                            <span class="nav-text">Driver</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="registerdriver.php">Add New Driver</a></li>
+                            <li><a href="driver.php">Driver List</a></li>
+                        </ul>
+                    </li>
+                    <br>
+                    <hr>
+                    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                            <i class="fa-solid fa-bus"></i> <span class="nav-text">Bus</span>
+                        </a>
+                        <ul aria-expanded="false">
+                        <li><a href="registerbus.php">Add New Bus</a></li>
+                            <li><a href="bus.php">Bus List</a></li>
+                        </ul>
+                    </li>
+                    <br>
+                    <hr>
+                    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                            <i class="fa-solid fa-list-ul"></i> <span class="nav-text">Booking</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="booking.php">Booking List</a></li>
+                        </ul>
+                    </li>
+                    <br>
+                    <hr>
+                    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                            <i class="fa-solid fa-user"></i> <span class="nav-text">User</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="user.php">User List</a></li>
 
 
+                        </ul>
+                    </li>
+                </ul>
 
-			</div>
-		</div>
+
+
+            </div>
+        </div>
         <!--**********************************
             Sidebar end
         ***********************************-->
@@ -351,103 +402,88 @@
             <!-- row -->
             <div class="container-fluid">
 
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="tab-content">
-                            <div class="tab-pane fade active show" id="AllStatus">
-                                <div class="col-12">
-                                    <div class="card">
+            
+                <div class="row " id="newregister">
+                    <div class="col-xl-12 col-xxl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title"> Add New Schedule</h4>
+                            </div>
+                            <div class="card-body">
+                                <div id="smartwizard" class="form-wizard order-create">
+                                    <ul class="nav nav-wizard">
+                                        <li><a class="nav-link" href="#wizard_Services">
+                                                <span>1</span>
+                                            </a></li>
+                                        <li><a class="nav-link" href="#wizard_Time">
+                                                <span>2</span>
+                                            </a></li>
 
-                                        <div class="card-body">
-                                            <div class="mb-4 ">
-                                                <a href="registerdriver.php" class="btn btn-primary btn-rounded fs-18">+ Add New Driver</a>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <form action="" method="post" enctype="multipart/form-data" >
+                                            <div id="wizard_Services" class="tab-pane" role="tabpanel">
+                                            
 
+                                                <div class="row">
 
+                                                    <div class="col-lg-6 mb-2">
+                                                        <div class="mb-3">
+                                                            <label class="text-label form-label">Package Name*</label>
+                                                            <input type="text" name="name" class="form-control" placeholder="Enter Name" required="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 mb-2">
+                                                        <div class="mb-3">
+                                                            <label class="text-label form-label"> UserName*</label>
+                                                            <input type="text" name="username" class="form-control" placeholder="Enter username" required="">
+                                                        </div>
+                                                    </div>
+                                                    
+
+                                                </div>
                                             </div>
-                                            <div class="table-responsive">
-                                                <table id="example3" class="display" style="min-width: 845px">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Image</th>
-                                                            <th>No</th>
-                                                            <th>Name</th>
-                                                            <th>Username</th>
-                                                            <th>Phone</th>
-                                                            <th>Address</th>
+                                            <div id="wizard_Time" class="tab-pane" role="tabpanel">
+                                            <div class="row">
+                                                <h2>Driver Information</h2>
+                                                    <div class="col-lg-6 mb-2">
+                                                        <div class="mb-3">
+                                                            <label class="text-label form-label">Name*</label>
+                                                            <input type="text" name="name" class="form-control" placeholder="Enter Name" required="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 mb-2">
+                                                        <div class="mb-3">
+                                                            <label class="text-label form-label"> UserName*</label>
+                                                            <input type="text" name="username" class="form-control" placeholder="Enter username" required="">
+                                                        </div>
+                                                    </div>
 
-                                                            <th>Joining Date</th>
+                                                    <div class="col-lg-6 mb-2">
+                                                        <div class="mb-3">
+                                                            <label class="text-label form-label">Phone Number*</label>
+                                                            <input type="text" name="phoneNumber" class="form-control" placeholder="Enter Phonenumber" required="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12 mb-3">
+                                                        <div class="mb-3">
+                                                            <label class="text-label form-label">Address*</label>
+                                                            <input type="text" name="address" class="form-control" required="" placeholder="Enter Address">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row-last">
 
-                                                            <th>Action</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <?php
-                                                        include "../Connection.php";
-                                                        $select = "select * from driver";
-                                                        $ret = mysqli_query($connect, $select);
-                                                        $count = mysqli_num_rows($ret);
-
-                                                        for ($i = 0; $i < $count; $i++) {
-                                                            $row = mysqli_fetch_array($ret);
-                                                            $id = $row['id'];
-                                                            $name = $row['name'];
-                                                            $username = $row['username'];
-                                                            $phone = $row['phone'];
-                                                            $address = $row['address'];
-                                                            $profile_image = $row['profile_image'];
-                                                            $date = $row['created_date'];
-
-                                                            echo "
-                                                            <tr>
-                                                            <td><img class='rounded-circle' width='35' src='../driverProfile/$profile_image' alt=''></td>
-                                                            <td>$id</td>
-                                                            <td>$name</td>
-                                                            <td>$username</td>
-                                                            <td>$phone</td>
-                                                            <td>$address</td>
-
-                                                            <td>$date</td>
-
-
-                                                            <td>
-                                                                <div class='d-flex'>
-                                                                    <a href='#' class='btn btn-primary ' data-bs-toggle='modal' data-bs-target='#exampleModalCenter'> <b>View License</b>
-                                                                    </a>
-                                                                    <!-- <button type='button' class='btn btn-primary mb-2' data-bs-toggle='modal' data-bs-target='#exampleModalCenter'>Modal centered</button> -->
-                                                                    &nbsp;
-                                                                    <a href='#' class='btn btn-danger '><b>Delete</b>
-                                                                    </a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                            ";
-                                                        } ?>
-
-
-
-                                                     
-
-
-
-
-
-
-
-                                                    </tbody>
-                                                </table>
+<button id="submitbtn" name="btnregister">Register Now</button>
+</div>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-
-
-
                         </div>
                     </div>
-
                 </div>
-
 
             </div>
 
