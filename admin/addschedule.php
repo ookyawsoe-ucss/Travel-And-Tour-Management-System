@@ -28,6 +28,55 @@
     <link href="vendor/jquery-smartwizard/dist/css/smart_wizard.min.css" rel="stylesheet">
 
     <link href="css/style.css" rel="stylesheet">
+<<<<<<< Updated upstream
+=======
+
+    <style>
+        .zoom {
+            padding: px;
+            /* background-color: green; */
+            transition: transform .2s;
+            width: 200px;
+            height: 120px;
+            margin: 0 auto;
+        }
+
+        .zoom:hover {
+            -ms-transform: scale(1.5);
+            /* IE 9 */
+            -webkit-transform: scale(1.5);
+            /* Safari 3-8 */
+            transform: scale(1.5);
+        }
+
+        button {
+            border: none;
+            width: 152px;
+            height: 40px;
+            margin: auto;
+            margin-top: 29px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            background: #ae3c33;
+            font-size: 13px;
+            color: #fff;
+            text-transform: uppercase;
+            font-family: "Muli-SemiBold";
+            border-radius: 20px;
+            overflow: hidden;
+            -webkit-transform: perspective(1px) translateZ(0);
+            transform: perspective(1px) translateZ(0);
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+            position: relative;
+            -webkit-transition-property: color;
+            transition-property: color;
+            -webkit-transition-duration: 0.5s;
+            transition-duration: 0.5s;
+        }
+>>>>>>> Stashed changes
 
 
     <link href="vendor/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
@@ -103,6 +152,32 @@
 </head>
 
 <body>
+<<<<<<< Updated upstream
+=======
+    <?php
+    // include 'Connection.php';
+    include('../common/adminheader.php');
+    // include('upload.php');
+    ?>
+    <?php
+include '../Connection.php';
+
+if (isset($_POST["btnsubmit"])) {
+    $fileCount = count($_FILES['file']['name']);
+    for ($i = 0; $i < $fileCount; $i++) {
+        $fileName = $_FILES['file']['name'][$i];
+        $sql = "insert into schedule (package_images) values('$fileName')";
+        if ($connect->query($sql) === true) {
+            // echo "success";
+            echo "<script>window.location='addschedule.php?msg=ins';</script>";
+        } else {
+            echo "err";
+        }
+        move_uploaded_file($_FILES['file']['tmp_name'][$i], 'scheduleImage/' . $fileName);
+    }
+}
+?>
+>>>>>>> Stashed changes
     <!--*******************
         Preloader start
     ********************-->
@@ -157,20 +232,50 @@
         <!--**********************************
             Nav header start
         ***********************************-->
+<<<<<<< Updated upstream
       
 
+=======
+
+
+
+
+>>>>>>> Stashed changes
         <div class="content-body">
             <!-- row -->
             <div class="container-fluid">
 
 
+<<<<<<< Updated upstream
             <div class="row">
+=======
+                <div class="row " id="newregister">
+>>>>>>> Stashed changes
                     <div class="col-xl-12 col-xxl-12">
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Add New Package</h4>
                             </div>
                             <div class="card-body">
+<<<<<<< Updated upstream
+=======
+                                <div id="smartwizard" class="form-wizard order-create">
+                                    <!-- <ul class="nav nav-wizard">
+                                        <li><a class="nav-link" href="#wizard_Services">
+                                                <span>1</span>
+                                            </a></li>
+                                        <li><a class="nav-link" href="#wizard_Time">
+                                                <span>2</span>
+                                            </a></li>
+
+                                    </ul> -->
+                                    <div class="tab-content">
+                                        <form action="" method="post" enctype="multipart/form-data">
+                                            <!-- <div id="wizard_Services" class="tab-pane" role="tabpanel">
+
+
+                                                <div class="row">
+>>>>>>> Stashed changes
 
 								<div id="smartwizard" class="form-wizard order-create">
 
@@ -277,6 +382,7 @@
                                                 <input type="text" class="form-control" value="09:30" name="stime">
                                             </div>
                                                     </div>
+<<<<<<< Updated upstream
                                                     <div class="col-lg-12 mb-3">
                                                             <div class="mb-3">
                                                                 <label class="text-label form-label">Select Images for package*</label>
@@ -285,12 +391,26 @@
                                                 </div>
                                                 
                                             </div>
+=======
+
+
+                                                </div>
+                                            </div> -->
+                                            <div id="wizard_Time" class="tab-pane" role="tabpanel">
+                                                <div class="row">
+                                                    <h2>Schedule Information</h2>
+                                                    <div class="col-lg-6 mb-2">
+                                                        <div class="mb-3">
+                                                            <label class="text-label form-label">Name*</label>
+                                                            <input type="text" name="name" class="form-control" placeholder="Enter Name" required="">
+>>>>>>> Stashed changes
                                                         </div>
                                                         <div class="form-row-last text-center">
                                                         <!-- <input type="submit" id="submitbtn" name="btnsubmit" value="Register Now" class="btn btn-sm btn-danger"> -->
                                                         <button type="submit" id="submitbtn" name="btnsubmit" class="button">Register Now</button>
                                                     </div>
                                                         </div>
+<<<<<<< Updated upstream
                                                    
 										
 												
@@ -302,6 +422,37 @@
 									</div>
 								</div>
                           
+=======
+                                                    </div>
+
+                                                    <div class="col-lg-6 mb-2">
+                                                        <div class="mb-3">
+                                                            <label class="text-label form-label">Phone Number*</label>
+                                                            <input type="text" name="phone" class="form-control" placeholder="Enter Phone number" required="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 mb-2">
+                                                        <div class="mb-3">
+                                                            <label class="text-label form-label">Address*</label>
+                                                            <input type="text" name="address" class="form-control" required="" placeholder="Enter Address">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12 mb-3">
+                                                        <div class="mb-3">
+                                                            <label class="text-label form-label">Select Images for package*</label>
+                                                            <input type="file" name="file[]" class="form-control" multiple>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row-last text-center">
+                                                        <!-- <input type="submit" id="submitbtn" name="btnsubmit" value="Register Now" class="btn btn-sm btn-danger"> -->
+                                                        <button type="submit" id="submitbtn" name="btnsubmit">Register Now</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+>>>>>>> Stashed changes
                             </div>
                         </div>
                     </div>

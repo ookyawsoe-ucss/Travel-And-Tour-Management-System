@@ -28,22 +28,25 @@
     <link href="vendor/jquery-smartwizard/dist/css/smart_wizard.min.css" rel="stylesheet">
 
     <link href="css/style.css" rel="stylesheet">
-    
+
     <style>
         .zoom {
-  padding: px;
-  /* background-color: green; */
-  transition: transform .2s;
-  width: 200px;
-  height: 120px;
-  margin: 0 auto;
-}
+            padding: px;
+            /* background-color: green; */
+            transition: transform .2s;
+            width: 200px;
+            height: 120px;
+            margin: 0 auto;
+        }
 
-.zoom:hover {
-  -ms-transform: scale(1.5); /* IE 9 */
-  -webkit-transform: scale(1.5); /* Safari 3-8 */
-  transform: scale(1.5); 
-}
+        .zoom:hover {
+            -ms-transform: scale(1.5);
+            /* IE 9 */
+            -webkit-transform: scale(1.5);
+            /* Safari 3-8 */
+            transform: scale(1.5);
+        }
+
         button {
             border: none;
             width: 152px;
@@ -180,48 +183,12 @@
         <!--**********************************
             Nav header start
         ***********************************-->
-      
+
         <?php
-		 include('../common/adminheader.php')
-		?>
-       
-        <!--**********************************
-            Header end ti-comment-alt
-        ***********************************-->
-
-        <!--**********************************
-            Sidebar start
-        ***********************************-->
-      
-        <!--**********************************
-            Sidebar end
-        ***********************************-->
-
-        <!--**********************************
-            Content body start
-            
-            
-        <!--**********************************
-            Content body end
-        ***********************************-->
+        include('../common/adminheader.php')
+        ?>
 
 
-
-        <!--**********************************
-            Footer start
-        ***********************************-->
-
-        <!--**********************************
-            Footer end
-        ***********************************-->
-
-        <!--**********************************
-           Support ticket button start
-        ***********************************-->
-
-        <!--**********************************
-           Support ticket button end
-        ***********************************-->
         <div class="content-body">
             <!-- row -->
             <div class="container-fluid">
@@ -256,7 +223,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <?php
+                                                        <?php
                                                         include "../Connection.php";
                                                         $select = "select * from driver";
                                                         $ret = mysqli_query($connect, $select);
@@ -300,7 +267,7 @@
 
 
 
-                                                     
+
 
 
 
@@ -340,6 +307,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
+<<<<<<< Updated upstream
                     <form action="driver.php" method="POST">
 
 
@@ -379,6 +347,16 @@
 </div>
 </form>
                        </div>
+=======
+                        <div class="row">
+                            <div class="col-6 zoom">
+                                <img class="rounded" width="200" src="../images/International-drivers-permit-singapore-4.jpg" alt="frontlicense">
+                            </div>
+                            <div class="col-6 zoom">
+                                <img class="rounded" width="200" src="../images/International-drivers-permit-singapore-4.jpg" alt="back license">
+                            </div>
+                        </div>
+>>>>>>> Stashed changes
                     </div>
                    
                 </div>
