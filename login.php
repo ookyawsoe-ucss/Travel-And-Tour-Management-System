@@ -71,11 +71,13 @@
                   $_SESSION['name'] = $row['name'];
                   $_SESSION['id'] = $row['id'];
                   $_SESSION['profile_image'] = $row['profile_image'];
+
+                  $_SESSION['id'] = $row['id'];
                   
                   $profile_image = $row['profile_image'];
                   $name = $row['name'];
-                     $id=$row['id'];
-                    echo"<script>alert('Customer Login Success, Welcome $name');window.location='index.php?id=$id';</script>";
+                    echo"<script>alert('Customer Login Success, Welcome $name');window.location='index.php';</script>";
+
               }
             else 
             {

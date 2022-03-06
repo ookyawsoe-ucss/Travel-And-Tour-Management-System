@@ -41,67 +41,9 @@
   //  session_start();
   include 'Connection.php';
 
-  if (isset($_POST['btnregister'])) {
+  $uid = $_SESSION['id'] ?? "";
 
-    $name = $_POST['txtname'];
-    $username = $_POST['txtusername'];
-    $phone = $_POST['txtphone'];
-    $email = $_POST['txtemail'];
-    $nrc = $_POST['txtnrc'];
-    $pass = $_POST['txtpass'];
-    $address = $_POST['txtaddress'];
-    $gender = $_POST['gender'];
-    $image = $_FILES['txtprofile']['name'];
-    $folder = "userProfile/";
-    if ($image) {
-      $filename = $folder . "" . $image;
-      $copy = copy($_FILES['txtprofile']['tmp_name'], $filename);
-    }
-
-
-    $insert = "insert into customer (name,username,email,address,gender,phone,nrc_no,profile_image,password) values ('$name','$username','$email','$address','$gender','$phone','$nrc','$image','$pass')";
-    $ret = mysqli_query($connect, $insert);
-
-    if ($ret) {
-      echo "<script>alert('Successful Added ');</script>";
-      //  echo"<script>window.location='buslist.php';</script>";
-    } else {
-      echo mysqli_error($connect);
-    }
-  }
-
-  ?>
-  <!-- END nav -->
-
-  <div class="hero-wrap" style="background-image: url('images/bg.jpg');" data-stellar-background-ratio="0.4">
-    <div class="overlay"></div>
-    <div class="container">
-      <form action="userprofile.php" method="post" class="search-property-5" enctype="multipart/form-data">
-
-        <div class="row no-gutters slider-text justify-content-start align-items-center">
-          <div class="col-lg-5 col-md-4 ">
-            <div class="form-row">
-              <div class="d-flex justify-content-start">
-                <div class="image-container">
-                  <img src="http://placehold.it/150x150" id="imgProfile" style="width: 250px; height: 250px" class="img-thumbnail" />
-                  <div class="middle mt-4">
-                    <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Select Profile" />
-
-                    <input type="file" style="display: none;" id="profilePicture" name="txtprofile" required/>
-
-                    <input type="button" class="btn btn-primary d-none ml-3" id="btnDiscard" value="Discard Changes" />
-
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-7 col-md-4 ">
-            <?php
-
-            $id = $_GET['id'];
-            $select = "select * from customer WHERE id ='$id'";
+            $select = "select * from customer WHERE id ='$uid'";
         
             $ret=mysqli_query($connect,$select);
             $row=mysqli_fetch_array($ret);
@@ -117,7 +59,75 @@
               $password = $row['password'];
               $profile_image = $row['profile_image'];
 
-             ?>
+
+              if (isset($_POST['btnregister'])) {
+
+                $name = $_POST['txtname'];
+                $username = $_POST['txtusername'];
+                $phone = $_POST['txtphone'];
+                $email = $_POST['txtemail'];
+                $nrc = $_POST['txtnrc'];
+                $pass = $_POST['txtpass'];
+                $address = $_POST['txtaddress'];
+                $image = $_FILES['txtprofile']['name'];
+                $folder = "userProfile/";
+                if ($image) {
+                  $filename = $folder . "" . $image;
+                  $copy = copy($_FILES['txtprofile']['tmp_name'], $filename);
+                }
+            
+                $insert="update  customer 
+              set name='$name' ,          
+              username='$username' ,
+              email='$email' ,
+              address='$address' ,
+              phone='$phone' ,
+              nrc_no='$nrc' ,
+              profile_image='$image' ,
+              password='$pass' 
+            
+              where id='$uid'
+              ";
+               
+                $ret = mysqli_query($connect, $insert);
+            
+                if ($ret) {
+                  echo "<script>alert('Successful Added ');</script>";
+                  //  echo"<script>window.location='buslist.php';</script>";
+                } else {
+                  echo mysqli_error($connect);
+                }
+              }
+
+  ?>
+  <!-- END nav -->
+
+  <div class="hero-wrap" style="background-image: url('images/bg.jpg');" data-stellar-background-ratio="0.4">
+    <div class="overlay"></div>
+    <div class="container">
+      <form action="userprofile.php" method="post" class="" enctype="multipart/form-data">
+
+        <div class="row no-gutters slider-text justify-content-start align-items-center">
+          <div class="col-lg-5 col-md-4 ">
+            <div class="form-row">
+              <div class="d-flex justify-content-start">
+                <div class="image-container">
+                  <img src="userProfile/<?php echo "$profile_image" ?>" id="imgProfile" style="width: 250px; height: 250px" class="img-thumbnail" />
+                  <div class="middle mt-4">
+                    <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Select Profile" />
+
+                    <input type="file" style="display: none;" id="profilePicture" name="txtprofile" />
+
+                    <input type="button" class="btn btn-primary d-none ml-3" id="btnDiscard" value="Discard Changes" />
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7 col-md-4 ">
+           
 
              
              <?php
@@ -154,19 +164,14 @@
               <input type='text' class='form-control' value='$address' name='txtaddress'>
             </div>
             <div class='col-6 mt-3'>
-              <label for='' class='text-white'> Gender</label>
-              <br>
-
-              <div class='form-check form-check-inline mt-3 ml-3'>
-                
-                <label class='form-check-label text-white'>$gender</label>
-              </div>
+              
           </div>
           ";
          ?>
             <div class="form-group">
               <br>
-              <input type="submit" value="Update" name="btnreupdate" class="btn btn-primary py-2 px-4 ">
+              <input type="submit" value="Update" name="btnregister" class="btn btn-primary py-2 px-4 ">
+
             </div>
           </div>
       </form>

@@ -68,20 +68,38 @@
             <h2 class="mb-2" >Our Packages</h2>
           </div>
         </div>
+       
     		<div class="row">
-    			<div class="col-md-3">
-    				<div class="car-wrap ftco-animate">
-    					<div class="img d-flex align-items-end" style="background-image: url(images/car-1.jpg);">
+        <?php
+         include "Connection.php";
+         $select = "select * from package";
+         $ret = mysqli_query($connect, $select);
+         $count = mysqli_num_rows($ret);
+ 
+         for ($i = 0; $i < $count; $i++) {
+             $row = mysqli_fetch_array($ret);
+             $id = $row['id'];
+             $pname = $row['p_name'];
+             $image = $row['package_image'];
+
+
+             
+        echo"
+    			<div class='col-md-3'>
+    				<div class='car-wrap ftco-animate'>
+    					<div class='img d-flex align-items-end' style='background-image: url(packageImage/$image);'>
     		
     					</div>
-    					<div class="text p-4 text-center">
-    						<h2 class="mb-0"><a href="#">Ngwe Saung</a></h2>
-    						<span>ငွေဆောင်အပန်းဖြေစခန်း</span>
-    						<p class="d-flex mb-0 d-block"><a href="#" class="btn btn-black btn-outline-black mr-1">Book now</a> <a href="#" class="btn btn-black btn-outline-black ml-1">Details</a></p>
+    					<div class='text p-4 text-center'>
+    						<h2 class='mb-0'><a href='#'>$pname</a></h2>
+    						<span>''</span>
+    						<p class='d-flex mb-0 d-block'><a href='#' class='btn btn-black btn-outline-black mr-1'>Book now</a> <a href='#' class='btn btn-black btn-outline-black ml-1'>Details</a></p>
     					</div>
     				</div>
     			</div>
-    		
+          ";
+         }
+    		?>
     		</div>
     	</div>
     </section>
