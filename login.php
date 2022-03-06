@@ -66,18 +66,15 @@
         if ($count1)
               {
                    $row=mysqli_fetch_array($ret1);
-                  //  $customerid=$row['id'];
+                  // $customerid=$row['customerid'];
                   //$_SESSION['CUID11']=$customerid;
                   $_SESSION['name'] = $row['name'];
-                  $_SESSION['id'] = $row['id'];
                   $_SESSION['profile_image'] = $row['profile_image'];
-
                   $_SESSION['id'] = $row['id'];
                   
                   $profile_image = $row['profile_image'];
                   $name = $row['name'];
                     echo"<script>alert('Customer Login Success, Welcome $name');window.location='index.php';</script>";
-
               }
             else 
             {

@@ -25,7 +25,7 @@
 					<div class="dropdown">
 						<li class="nav-item"><a href="logout.php" id="dropdownMenuLink" data-toggle="dropdown" class="nav-link dropdown-toggle"><img src="<?php echo "userProfile/$profile_image" ?>" alt="profile image" width="40px" height="35px" class="rounded-pill">&nbsp;&nbsp;<?php echo "$name" ?> </a></li>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-
+					
 							<a class="dropdown-item text-info" href="userprofile.php?id=1" style="font-family: Serif;"><span class="icon-user"></span>&nbsp;&nbsp;View Profile</a><hr>
 							<a class="dropdown-item text-info" href="logout.php" style="font-family: Serif;"><span class="icon-sign-out"></span>&nbsp;&nbsp;Logout</a>
 
