@@ -13,18 +13,20 @@
 				<li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
 				<?php
 				session_start();
+				$uid = $_SESSION['id'] ?? "";
+
 				$name = $_SESSION['name'] ?? "";
 				$profile_image = $_SESSION['profile_image'] ?? "";
+				
 				if ($name) { ?>
 
 					<div class="dropdown">
 						<li class="nav-item"><a href="logout.php" id="dropdownMenuLink" data-toggle="dropdown" class="nav-link dropdown-toggle"><img src="<?php echo "userProfile/$profile_image" ?>" alt="profile image" width="40px" height="35px" class="rounded-pill">&nbsp;&nbsp;<?php echo "$name" ?> </a></li>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-							<a class="dropdown-item text-info" href="#"><span class="icon-user"></span>&nbsp;&nbsp;View Profile</a>
+							<a class="dropdown-item text-info" href="userprofile.php?"><span class="icon-user"></span>&nbsp;&nbsp;View Profile</a>
 							<a class="dropdown-item text-info" href="logout.php"><span class="icon-sign-out"></span>&nbsp;&nbsp;Logout</a>
 						</div>
 					</div>
-
 
 
 				<?php } else { ?>

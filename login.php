@@ -70,10 +70,11 @@
                   //$_SESSION['CUID11']=$customerid;
                   $_SESSION['name'] = $row['name'];
                   $_SESSION['profile_image'] = $row['profile_image'];
+                  $_SESSION['id'] = $row['id'];
+                  
                   $profile_image = $row['profile_image'];
                   $name = $row['name'];
-                     $uid=$row['id'];
-                    echo"<script>alert('Customer Login Success, Welcome $name');window.location='index.php?id=$uid';</script>";
+                    echo"<script>alert('Customer Login Success, Welcome $name');window.location='index.php';</script>";
               }
             else 
             {
