@@ -68,10 +68,8 @@
 						<div class="widget-stat card bg-primary">
 							<div class="card-body  p-4">
 								<div class="media">
-									<span class="me-3">
-										<i class="la la-users"></i>
-									</span>
-									<div class="media-body text-white">
+										<img src="../admin/images/list.png" alt="schedule" width="100px">
+											<div class="media-body text-white">
 										<p class="mb-1">Total Schedule</p>
 										<?php
 										include "../Connection.php";
@@ -93,9 +91,8 @@
 						<div class="widget-stat card bg-warning">
 							<div class="card-body p-4">
 								<div class="media">
-									<span class="me-3">
-										<i class="la la-user"></i>
-									</span>
+								<img src="../admin/images/user.png" alt="User Image" width="100px">
+
 									<div class="media-body text-white">
 										<p class="mb-1">Total Customer</p>
 										<?php
@@ -118,9 +115,8 @@
 						<div class="widget-stat card bg-secondary">
 							<div class="card-body p-4">
 								<div class="media">
-									<span class="me-3">
-										<i class="la la-graduation-cap"></i>
-									</span>
+								<img src="../admin/images/driver.png" alt="Driver Image" width="100px">
+
 									<div class="media-body text-white">
 										<p class="mb-1">Total Driver</p>
 										<?php
@@ -143,9 +139,8 @@
 						<div class="widget-stat card bg-danger ">
 							<div class="card-body p-4">
 								<div class="media">
-									<span class="me-3">
-										<i class="la la-dollar"></i>
-									</span>
+								<img src="../admin/images/bus.png" alt="BusImage" width="100px">
+
 									<div class="media-body text-white">
 										<p class="mb-1">Total Bus</p>
 										<?php
@@ -169,9 +164,8 @@
 						<div class="widget-stat card bg-success ">
 							<div class="card-body p-4">
 								<div class="media">
-									<span class="me-3">
-										<i class="la la-dollar"></i>
-									</span>
+								<img src="../admin/images/booking.png" alt="" width="100px">
+
 									<div class="media-body text-white">
 										<p class="mb-1">Total Booking</p>
 										<?php
@@ -249,7 +243,7 @@
 	<!-- Apex Chart -->
 	<script src="vendor/apexchart/apexchart.js"></script>
 
-	<script src="vendor/chart.js/Chart.bundle.min.js"></script>
+	<!-- <script src="vendor/chart.js/Chart.bundle.min.js"></script> -->
 
 	<!-- Chart piety plugin files -->
 	<script src="vendor/peity/jquery.peity.min.js"></script>
@@ -261,7 +255,7 @@
 	<script src="js/custom.min.js"></script>
 	<script src="js/dlabnav-init.js"></script>
 	<script src="js/demo.js"></script>
-	<!-- <script src="js/styleSwitcher.js"></script> -->
+	<script src="js/styleSwitcher.js"></script>
 	<script>
 		function cardsCenter() {
 

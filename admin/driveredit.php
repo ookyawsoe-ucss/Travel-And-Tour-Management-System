@@ -159,58 +159,28 @@
 
 <body>
 <?php 
-	
-include '../Connection.php'; 
+	include '../Connection.php';
 
-if (isset($_POST['btnregister']))
+	if (isset($_GET['id']))
 {
-   $name=$_POST['name'];
-   $username=$_POST['username'];  
-  $phone=$_POST['phoneNumber'];
-  $address=$_POST['address'];
+  $id=$_GET['id'];
 
-//   $sets=$_POST{'txtsets'};
-  $image=$_FILES['profile_image']['name'];
-   $folder="../driverProfile/";
-   if($image)
-   {
-    $filename=$folder."".$image;
-    $copy=copy($_FILES['profile_image']['tmp_name'],$filename);
-   }
-   
-   $sideimage=$_FILES['licence_front']['name'];
-   $folder="../driverProfile/";
+$delete="select * from driver where id='$id'";
+$ret=mysqli_query($connect,$delete);
+$row=mysqli_fetch_array($ret);
+$pf=$row['profile_image'];
+$sideimg=$row['l_front'];
+$inside=$row['l_front'];
 
-   if($sideimage)
-   {
-    $filename=$folder."".$sideimage;
-    $copy=copy($_FILES['licence_front']['tmp_name'],$filename);
-   }
+$name=$row['name'];
+$username=$row['username'];
+$phno=$row['phone'];
+$address=$row['address'];
 
-   $insideimage=$_FILES['licence_back']['name'];
-   $folder="../driverProfile/";
-   
-   if($insideimage)
-   {
-    $filename=$folder."".$insideimage;
-    $copy=copy($_FILES['licence_back']['tmp_name'],$filename);
-   }
 
-  $insert="insert into driver (name,username,phone,address,profile_image,l_front,l_back) values ('$name','$username','$phone','$address','$image','$sideimage','$insideimage')";
-  $ret=mysqli_query($connect,$insert);
-
-  if($ret)
-  {
-    echo"<script>alert('Successful Added ');</script>";
-     echo"<script>window.location='driver.php';</script>";
-  }
-  else
-  {
-    echo mysqli_error($connect);
-  }
 }
-			
  ?>
+
     <!--*******************
         Preloader start
     ********************-->
@@ -232,11 +202,11 @@ if (isset($_POST['btnregister']))
         <!--**********************************
             Nav header start
         ***********************************-->
-        <?php
+    	<?php
 		 include('../common/adminheader.php')
 		?>
 
-      
+       
         <!--**********************************
             Header end ti-comment-alt
         ***********************************-->
@@ -244,7 +214,7 @@ if (isset($_POST['btnregister']))
         <!--**********************************
             Sidebar start
         ***********************************-->
-    
+
         <!--**********************************
             Sidebar end
         ***********************************-->
@@ -262,7 +232,7 @@ if (isset($_POST['btnregister']))
         <!--**********************************
             Footer start
         ***********************************-->
-
+        
         <!--**********************************
             Footer end
         ***********************************-->
@@ -307,7 +277,7 @@ if (isset($_POST['btnregister']))
                                                         <div class="card-title mb-4">
                                                             <div class="d-flex justify-content-start">
                                                                 <div class="image-container">
-                                                                    <img src="../images/profile.png" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
+                                                                    <img src="<?php echo"../driverProfile/$pf" ?>" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
                                                                     <div class="middle">
                                                                         <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Upload" />
                                                                         <input type="file" style="display: none;" id="profilePicture" name="profile_image" />
@@ -335,7 +305,7 @@ if (isset($_POST['btnregister']))
 
                                                             <div class="d-flex justify-content-start">
                                                                 <div class="image-container">
-                                                                    <img src="../images/Driving-License-14.png" id="imgProfilefls" style="width: 150px; height: 150px" class="img-thumbnail" />
+                                                                    <img src="<?php echo"../driverProfile/$sideimg" ?>" id="imgProfilefls" style="width: 150px; height: 150px" class="img-thumbnail" />
                                                                     <div class="middle">
                                                                         <input type="button" class="btn btn-secondary" id="btnChangePicturefls" value="Upload" />
                                                                         <input type="file" style="display: none;" id="profilePicturefls" name="licence_front" />
@@ -364,7 +334,7 @@ if (isset($_POST['btnregister']))
                                                         <div class="card-title mb-4">
                                                             <div class="d-flex justify-content-start">
                                                                 <div class="image-container">
-                                                                    <img src="../images/International-drivers-permit-singapore-4.jpg" id="imgProfilebls" style="width: 150px; height: 150px" class="img-thumbnail" />
+                                                                    <img src="<?php echo"../driverProfile/$inside" ?>" id="imgProfilebls" style="width: 150px; height: 150px" class="img-thumbnail" />
                                                                     <div class="middle">
                                                                         <input type="button" class="btn btn-secondary" id="btnChangePicturebls" value="Upload" />
                                                                         <input type="file" style="display: none;" id="profilePicturebls" name="licence_back" />
@@ -396,31 +366,31 @@ if (isset($_POST['btnregister']))
                                                     <div class="col-lg-6 mb-2">
                                                         <div class="mb-3">
                                                             <label class="text-label form-label">Name*</label>
-                                                            <input type="text" name="name" class="form-control" placeholder="Enter Name" required="">
+                                                            <input type="text" name="name" class="form-control" placeholder="Enter Name" required="" value="<?php echo"$name" ?>">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 mb-2">
                                                         <div class="mb-3">
                                                             <label class="text-label form-label"> UserName*</label>
-                                                            <input type="text" name="username" class="form-control" placeholder="Enter username" required="">
+                                                            <input type="text" name="username" class="form-control" placeholder="Enter username" required=""value="<?php echo"$username" ?>">
                                                         </div>
                                                     </div>
 
                                                     <div class="col-lg-6 mb-2">
                                                         <div class="mb-3">
                                                             <label class="text-label form-label">Phone Number*</label>
-                                                            <input type="text" name="phoneNumber" class="form-control" placeholder="Enter Phonenumber" required="">
+                                                            <input type="text" name="phoneNumber" class="form-control" placeholder="Enter Phonenumber" required=""value="<?php echo"$phno" ?>">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-12 mb-3">
                                                         <div class="mb-3">
                                                             <label class="text-label form-label">Address*</label>
-                                                            <input type="text" name="address" class="form-control" required="" placeholder="Enter Address">
+                                                            <input type="text" name="address" class="form-control" required="" placeholder="Enter Address" value="<?php echo"$address" ?>">
                                                         </div>
                                                     </div>
                                                     <div class="form-row-last">
 
-<button id="submitbtn" name="btnregister">Register Now</button>
+<button id="submitbtn" name="btnregister"> Update Data</button>
 </div>
                                                 </div>
                                             </div>
@@ -439,36 +409,13 @@ if (isset($_POST['btnregister']))
         <!-- Register modal -->
 
         <!--Lisense Modal -->
-        <div class="modal fade" id="exampleModalCenter">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal">
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                       <div class="row">
-                           <div class="col-6 zoom">
-                           <img class="rounded" width="200" src="../images/International-drivers-permit-singapore-4.jpg" alt="frontlicense">
-                           </div>
-                           <div class="col-6 zoom">
-                           <img class="rounded" width="200" src="../images/International-drivers-permit-singapore-4.jpg" alt="back license">
-                           </div>
-                       </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
     </div>
     <!--**********************************
         Main wrapper end
     ***********************************-->
-
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <!--**********************************
         Scripts
     ***********************************-->
@@ -499,8 +446,7 @@ if (isset($_POST['btnregister']))
     <!-- Form validate init -->
     <script src="js/plugins-init/jquery.validate-init.js"></script>
 
-    <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
     <!-- Form Steps -->
     <script src="vendor/jquery-smartwizard/dist/js/jquery.smartWizard.js"></script>
     <script src="vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>

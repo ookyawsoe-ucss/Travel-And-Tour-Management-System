@@ -286,7 +286,7 @@
 
                                                             <td>
                                                                 <div class='d-flex'>
-                                                                    <a href='#' class='btn btn-primary ' data-bs-toggle='modal' data-bs-target='#exampleModalCenter'> <b>View License</b>
+                                                                    <a href='driveredit.php?id=$id' class='btn btn-primary  '<b>Edit </b>
                                                                     </a>
                                                                     <!-- <button type='button' class='btn btn-primary mb-2' data-bs-toggle='modal' data-bs-target='#exampleModalCenter'>Modal centered</button> -->
                                                                     &nbsp;
@@ -331,28 +331,56 @@
         <!-- Register modal -->
 
         <!--Lisense Modal -->
-        <div class="modal fade" id="exampleModalCenter">
+        <div class="modal fade" id="editmodal">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
+                        <h5 class="modal-title"> Update Form</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal">
                         </button>
                     </div>
                     <div class="modal-body">
-                       <div class="row">
-                           <div class="col-6 zoom">
-                           <img class="rounded" width="200" src="../images/International-drivers-permit-singapore-4.jpg" alt="frontlicense">
-                           </div>
-                           <div class="col-6 zoom">
-                           <img class="rounded" width="200" src="../images/International-drivers-permit-singapore-4.jpg" alt="back license">
-                           </div>
+                    <form action="driver.php" method="POST">
+
+
+
+    <div class="form-group">
+        <label>  Id </label>
+        <input type="text" name="fname" id="fname" class="form-control"
+            placeholder="Enter First Name" readonly>
+    </div>
+
+    <div class="form-group">
+        <label>  Name </label>
+        <input type="text" name="name" id="lname" class="form-control"
+            placeholder="Enter Last Name">
+    </div>
+
+    <div class="form-group">
+        <label> User Name </label>
+        <input type="text" name="urname" id="course" class="form-control"
+            placeholder="Enter Course">
+    </div>
+
+    <div class="form-group">
+        <label> Phone </label>
+        <input type="text" name="phone" id="contact" class="form-control"
+            placeholder="Enter Phone Number">
+    </div>
+    <div class="form-group">
+        <label> Address </label>
+        <input type="text" name="address" id="phone" class="form-control"
+            placeholder="Enter Phone Number">
+    </div>
+
+<div class="modal-footer">
+<button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
+    <button type="submit" name="updatedata" class="btn btn-primary">Update Data</button>
+</div>
+</form>
                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
+                   
                 </div>
             </div>
         </div>
@@ -390,7 +418,8 @@
 
     <!-- Form validate init -->
     <script src="js/plugins-init/jquery.validate-init.js"></script>
-
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <!-- Form Steps -->
     <script src="vendor/jquery-smartwizard/dist/js/jquery.smartWizard.js"></script>
@@ -567,6 +596,31 @@
             setTimeout(function() {
                 cardsCenter();
             }, 1000);
+        });
+    </script>
+
+<script>
+        $(document).ready(function () {
+
+            $('.editbtn').on('click', function () {
+
+                $('#editmodal').modal('show');
+
+                $tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function () {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+
+                $('#id').val(data[0]);
+                $('#fname').val(data[1]);
+                $('#lname').val(data[2]);
+                $('#course').val(data[3]);
+                $('#contact').val(data[4]);
+                $('#phone').val(data[5]);
+            });
         });
     </script>
 

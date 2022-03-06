@@ -54,6 +54,7 @@ if (isset($_POST['btnregister']))
   $address=$_POST['txtaddress']; 
   $gender = $_POST['gender'];
   $image=$_FILES['txtprofile']['name'];
+  
    $folder="userProfile/";
    if($image)
    {

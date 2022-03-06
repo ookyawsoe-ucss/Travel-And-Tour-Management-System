@@ -504,7 +504,8 @@ if (isset($_POST['btnregister']))
     <!-- Form validate init -->
     <script src="js/plugins-init/jquery.validate-init.js"></script>
 
-
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <!-- Form Steps -->
     <script src="vendor/jquery-smartwizard/dist/js/jquery.smartWizard.js"></script>
     <script src="vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>

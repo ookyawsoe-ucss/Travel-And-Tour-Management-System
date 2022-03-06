@@ -85,11 +85,11 @@
 					<hr>
 					<li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
 							<i class="fas fa-table"></i>
-							<span class="nav-text">Schedule</span>
+							<span class="nav-text">Package</span>
 						</a>
 						<ul aria-expanded="false">
-							<li><a href="addschedule.php">Add New Schedule</a></li>
-							<li><a href="schedule.php">Schedule List</a></li>
+							<li><a href="addschedule.php">Add New Package</a></li>
+							<li><a href="schedule.php">Package List</a></li>
 						</ul>
 					</li>
 

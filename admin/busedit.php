@@ -158,59 +158,7 @@
 </head>
 
 <body>
-<?php 
-	
-include '../Connection.php'; 
 
-if (isset($_POST['btnregister']))
-{
-   $name=$_POST['name'];
-   $username=$_POST['username'];  
-  $phone=$_POST['phoneNumber'];
-  $address=$_POST['address'];
-
-//   $sets=$_POST{'txtsets'};
-  $image=$_FILES['profile_image']['name'];
-   $folder="../driverProfile/";
-   if($image)
-   {
-    $filename=$folder."".$image;
-    $copy=copy($_FILES['profile_image']['tmp_name'],$filename);
-   }
-   
-   $sideimage=$_FILES['licence_front']['name'];
-   $folder="../driverProfile/";
-
-   if($sideimage)
-   {
-    $filename=$folder."".$sideimage;
-    $copy=copy($_FILES['licence_front']['tmp_name'],$filename);
-   }
-
-   $insideimage=$_FILES['licence_back']['name'];
-   $folder="../driverProfile/";
-   
-   if($insideimage)
-   {
-    $filename=$folder."".$insideimage;
-    $copy=copy($_FILES['licence_back']['tmp_name'],$filename);
-   }
-
-  $insert="insert into driver (name,username,phone,address,profile_image,l_front,l_back) values ('$name','$username','$phone','$address','$image','$sideimage','$insideimage')";
-  $ret=mysqli_query($connect,$insert);
-
-  if($ret)
-  {
-    echo"<script>alert('Successful Added ');</script>";
-     echo"<script>window.location='driver.php';</script>";
-  }
-  else
-  {
-    echo mysqli_error($connect);
-  }
-}
-			
- ?>
     <!--*******************
         Preloader start
     ********************-->
@@ -232,11 +180,11 @@ if (isset($_POST['btnregister']))
         <!--**********************************
             Nav header start
         ***********************************-->
-        <?php
+    	<?php
 		 include('../common/adminheader.php')
 		?>
 
-      
+       
         <!--**********************************
             Header end ti-comment-alt
         ***********************************-->
@@ -244,7 +192,7 @@ if (isset($_POST['btnregister']))
         <!--**********************************
             Sidebar start
         ***********************************-->
-    
+
         <!--**********************************
             Sidebar end
         ***********************************-->
@@ -262,7 +210,7 @@ if (isset($_POST['btnregister']))
         <!--**********************************
             Footer start
         ***********************************-->
-
+        
         <!--**********************************
             Footer end
         ***********************************-->
@@ -278,159 +226,8 @@ if (isset($_POST['btnregister']))
             <!-- row -->
             <div class="container-fluid">
 
-            
-                <div class="row " id="newregister">
-                    <div class="col-xl-12 col-xxl-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title"> Register Driver</h4>
-                            </div>
-                            <div class="card-body">
-                                <div id="smartwizard" class="form-wizard order-create">
-                                    <ul class="nav nav-wizard">
-                                        <li><a class="nav-link" href="#wizard_Services">
-                                                <span>1</span>
-                                            </a></li>
-                                        <li><a class="nav-link" href="#wizard_Time">
-                                                <span>2</span>
-                                            </a></li>
-
-                                    </ul>
-                                    <div class="tab-content">
-                                        <form action="" method="post" enctype="multipart/form-data" >
-                                            <div id="wizard_Services" class="tab-pane" role="tabpanel">
-                                            
-
-                                                <div class="row">
-
-                                                    <div class="col-12">
-                                                        <div class="card-title mb-4">
-                                                            <div class="d-flex justify-content-start">
-                                                                <div class="image-container">
-                                                                    <img src="../images/profile.png" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
-                                                                    <div class="middle">
-                                                                        <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Upload" />
-                                                                        <input type="file" style="display: none;" id="profilePicture" name="profile_image" />
-                                                                    </div>
-
-                                                                    <!-- <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" /> -->
-                                                                </div>
-
-                                                                <div class="ml-auto">
-                                                                    <input type="button" class="btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />
-                                                                </div>
-                                                            </div>
-
-
-                                                        </div>
-                                                        <label for="" class="text-danger">
-                                                            <h3 class="text-danger">
-                                                                &nbsp&nbspUpload Profile
-                                                                <h3>
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="col-6">
-                                                        <div class="card-title mb-4">
-
-                                                            <div class="d-flex justify-content-start">
-                                                                <div class="image-container">
-                                                                    <img src="../images/Driving-License-14.png" id="imgProfilefls" style="width: 150px; height: 150px" class="img-thumbnail" />
-                                                                    <div class="middle">
-                                                                        <input type="button" class="btn btn-secondary" id="btnChangePicturefls" value="Upload" />
-                                                                        <input type="file" style="display: none;" id="profilePicturefls" name="licence_front" />
-                                                                    </div>
-
-                                                                    <!-- <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" /> -->
-                                                                </div>
-
-
-
-                                                            </div>
-                                                            <div class="ml-auto">
-                                                                <input type="button" class="btn btn-primary d-none" id="btnDiscardfls" value="Discard Changes" />
-                                                            </div>
-
-                                                        </div>
-                                                        <label for="" class="text-primary">
-                                                            <h3 class="text-primary">
-                                                                *Upload License Front Photo
-                                                            </h3>
-                                                        </label>
-                                                        <!-- front ls -->
-                                                    </div>
-                                                    <br>
-                                                    <div class="col-6">
-                                                        <div class="card-title mb-4">
-                                                            <div class="d-flex justify-content-start">
-                                                                <div class="image-container">
-                                                                    <img src="../images/International-drivers-permit-singapore-4.jpg" id="imgProfilebls" style="width: 150px; height: 150px" class="img-thumbnail" />
-                                                                    <div class="middle">
-                                                                        <input type="button" class="btn btn-secondary" id="btnChangePicturebls" value="Upload" />
-                                                                        <input type="file" style="display: none;" id="profilePicturebls" name="licence_back" />
-                                                                    </div>
-
-                                                                    <!-- <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" /> -->
-                                                                </div>
-
-
-                                                            </div>
-                                                            <div class="ml-auto">
-                                                                <input type="button" class="btn btn-primary d-none" id="btnDiscardbls" value="Discard Changes" />
-                                                            </div>
-                                                        </div>
-                                                        <label for="">
-                                                            <h3 class="text-primary">
-                                                                *Upload License Back Photo
-                                                                <h3>
-                                                        </label>
-
-                                                    </div>
-                                                    
-
-                                                </div>
-                                            </div>
-                                            <div id="wizard_Time" class="tab-pane" role="tabpanel">
-                                            <div class="row">
-                                                <h2>Driver Information</h2>
-                                                    <div class="col-lg-6 mb-2">
-                                                        <div class="mb-3">
-                                                            <label class="text-label form-label">Name*</label>
-                                                            <input type="text" name="name" class="form-control" placeholder="Enter Name" required="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6 mb-2">
-                                                        <div class="mb-3">
-                                                            <label class="text-label form-label"> UserName*</label>
-                                                            <input type="text" name="username" class="form-control" placeholder="Enter username" required="">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-lg-6 mb-2">
-                                                        <div class="mb-3">
-                                                            <label class="text-label form-label">Phone Number*</label>
-                                                            <input type="text" name="phoneNumber" class="form-control" placeholder="Enter Phonenumber" required="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12 mb-3">
-                                                        <div class="mb-3">
-                                                            <label class="text-label form-label">Address*</label>
-                                                            <input type="text" name="address" class="form-control" required="" placeholder="Enter Address">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-row-last">
-
-<button id="submitbtn" name="btnregister">Register Now</button>
-</div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+       
+               
 
             </div>
 
@@ -439,31 +236,7 @@ if (isset($_POST['btnregister']))
         <!-- Register modal -->
 
         <!--Lisense Modal -->
-        <div class="modal fade" id="exampleModalCenter">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal">
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                       <div class="row">
-                           <div class="col-6 zoom">
-                           <img class="rounded" width="200" src="../images/International-drivers-permit-singapore-4.jpg" alt="frontlicense">
-                           </div>
-                           <div class="col-6 zoom">
-                           <img class="rounded" width="200" src="../images/International-drivers-permit-singapore-4.jpg" alt="back license">
-                           </div>
-                       </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
     </div>
     <!--**********************************
         Main wrapper end
@@ -484,7 +257,8 @@ if (isset($_POST['btnregister']))
     <script src="js/plugins-init/datatables.init.js"></script>
 
     <script src="vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
-
+        <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="js/custom.min.js"></script>
     <script src="js/dlabnav-init.js"></script>
     <script src="js/demo.js"></script>
@@ -499,8 +273,7 @@ if (isset($_POST['btnregister']))
     <!-- Form validate init -->
     <script src="js/plugins-init/jquery.validate-init.js"></script>
 
-    <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
     <!-- Form Steps -->
     <script src="vendor/jquery-smartwizard/dist/js/jquery.smartWizard.js"></script>
     <script src="vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>

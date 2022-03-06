@@ -273,7 +273,7 @@
 
                                                             <td>
                                                                 <div class="d-flex">
-                                                                    <a href="#" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModalCenter"> <b>Bus Images</b>
+                                                                    <a href="busedit.php" class="btn btn-primary "  <b> Edit</b>
                                                                     </a>
                                                                     <!-- <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Modal centered</button> -->
                                                                     &nbsp;
@@ -364,7 +364,8 @@
     <script src="js/plugins-init/datatables.init.js"></script>
 
     <script src="vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
-
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="js/custom.min.js"></script>
     <script src="js/dlabnav-init.js"></script>
     <script src="js/demo.js"></script>
