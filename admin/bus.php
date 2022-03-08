@@ -258,33 +258,46 @@
                                                     <tbody>
 
 
+                                                    <?php
+                                                        include "../Connection.php";
+                                                        $select = "select * from bus";
+                                                        $ret = mysqli_query($connect, $select);
+                                                        $count = mysqli_num_rows($ret);
 
+                                                        for ($i = 0; $i < $count; $i++) {
+                                                            $row = mysqli_fetch_array($ret);
+                                                            $id = $row['id'];
+                                                            $name = $row['car_name'];
+                                                            $license = $row['car_license_no'];
+                                                            $cartype = $row['car_type'];
+                                                            $carimage = $row['car_front_image'];
+                                                            $date = $row['created_date'];
 
-                                                        <tr>
-                                                            
-                                                            <td>1</td>
-                                                            <td>BMW</td>
-                                                            <td>Vip</td>
-                                                            <td>123123</td>
-                                                           
+                                                            echo "
+                                                            <tr>
+                                                            <td><img class='' width='80' src='../carImage/$carimage' alt=''></td>
+                                                            <td>$id</td>
+                                                            <td>$name</td>
+                                                            <td>$license</td>
+                                                            <td>$cartype</td>
+                                                          
 
-                                                            <td>2008/11/28</td>
+                                                            <td>$date</td>
 
 
                                                             <td>
-                                                                <div class="d-flex">
-                                                                    <a href="busedit.php" class="btn btn-primary "  <b> Edit</b>
+                                                                <div class='d-flex'>
+                                                                    <a href='busedit.php?id=$id' class='btn btn-primary  '<b>Edit </b>
                                                                     </a>
-                                                                    <!-- <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Modal centered</button> -->
+                                                                    <!-- <button type='button' class='btn btn-primary mb-2' data-bs-toggle='modal' data-bs-target='#exampleModalCenter'>Modal centered</button> -->
                                                                     &nbsp;
-                                                                    <a href="#" class="btn btn-danger "><b>Delete</b>
+                                                                    <a href='#' class='btn btn-danger '><b>Delete</b>
                                                                     </a>
                                                                 </div>
                                                             </td>
                                                         </tr>
-
-
-
+                                                            ";
+                                                        } ?>
 
 
 

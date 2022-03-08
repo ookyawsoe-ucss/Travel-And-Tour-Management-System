@@ -28,22 +28,25 @@
     <link href="vendor/jquery-smartwizard/dist/css/smart_wizard.min.css" rel="stylesheet">
 
     <link href="css/style.css" rel="stylesheet">
-    
+
     <style>
         .zoom {
-  padding: px;
-  /* background-color: green; */
-  transition: transform .2s;
-  width: 200px;
-  height: 120px;
-  margin: 0 auto;
-}
+            padding: px;
+            /* background-color: green; */
+            transition: transform .2s;
+            width: 200px;
+            height: 120px;
+            margin: 0 auto;
+        }
 
-.zoom:hover {
-  -ms-transform: scale(1.5); /* IE 9 */
-  -webkit-transform: scale(1.5); /* Safari 3-8 */
-  transform: scale(1.5); 
-}
+        .zoom:hover {
+            -ms-transform: scale(1.5);
+            /* IE 9 */
+            -webkit-transform: scale(1.5);
+            /* Safari 3-8 */
+            transform: scale(1.5);
+        }
+
         button {
             border: none;
             width: 152px;
@@ -158,28 +161,46 @@
 </head>
 
 <body>
-<?php 
-	include '../Connection.php';
+    <?php
+    include '../Connection.php';
 
-	if (isset($_GET['id']))
-{
-  $id=$_GET['id'];
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
 
-$delete="select * from driver where id='$id'";
-$ret=mysqli_query($connect,$delete);
-$row=mysqli_fetch_array($ret);
-$pf=$row['profile_image'];
-$sideimg=$row['l_front'];
-$inside=$row['l_front'];
-
-$name=$row['name'];
-$username=$row['username'];
-$phno=$row['phone'];
-$address=$row['address'];
+        $delete = "select * from driver where id='$id'";
+        $ret = mysqli_query($connect, $delete);
+        $row = mysqli_fetch_array($ret);
+        $pf = $row['profile_image'];
+        $sideimg = $row['l_front'];
+        $inside = $row['l_front'];
+        $name = $row['name'];
+        $username = $row['username'];
+        $phno = $row['phone'];
+        $address = $row['address'];
 
 
-}
- ?>
+        if (isset($_POST['btnregister'])) {
+
+            $name = $_POST['name'];
+            $username = $_POST['username'];
+            $phone = $_POST['phone'];
+            $address = $_POST['address'];
+            
+           
+
+            $insert = "update  `driver` set name='$name', username='$username', phone='$phone', address='$address'  where `id`='$id'";
+
+            $ret = mysqli_query($connect, $insert);
+
+            if ($ret) {
+                echo "<script>alert('Successful Added ');</script>";
+                //  echo"<script>window.location='buslist.php';</script>";
+            } else {
+                echo mysqli_error($connect);
+            }
+        }
+    }
+    ?>
 
     <!--*******************
         Preloader start
@@ -202,11 +223,11 @@ $address=$row['address'];
         <!--**********************************
             Nav header start
         ***********************************-->
-    	<?php
-		 include('../common/adminheader.php')
-		?>
+        <?php
+        include('../common/adminheader.php')
+        ?>
 
-       
+
         <!--**********************************
             Header end ti-comment-alt
         ***********************************-->
@@ -232,7 +253,7 @@ $address=$row['address'];
         <!--**********************************
             Footer start
         ***********************************-->
-        
+
         <!--**********************************
             Footer end
         ***********************************-->
@@ -248,150 +269,53 @@ $address=$row['address'];
             <!-- row -->
             <div class="container-fluid">
 
-            
+
                 <div class="row " id="newregister">
                     <div class="col-xl-12 col-xxl-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title"> Register Driver</h4>
+                                <h4 class="card-title"> Edit Driver</h4>
                             </div>
                             <div class="card-body">
                                 <div id="smartwizard" class="form-wizard order-create">
-                                    <ul class="nav nav-wizard">
-                                        <li><a class="nav-link" href="#wizard_Services">
-                                                <span>1</span>
-                                            </a></li>
-                                        <li><a class="nav-link" href="#wizard_Time">
-                                                <span>2</span>
-                                            </a></li>
-
-                                    </ul>
+                                   
                                     <div class="tab-content">
-                                        <form action="" method="post" enctype="multipart/form-data" >
-                                            <div id="wizard_Services" class="tab-pane" role="tabpanel">
-                                            
-
-                                                <div class="row">
-
-                                                    <div class="col-12">
-                                                        <div class="card-title mb-4">
-                                                            <div class="d-flex justify-content-start">
-                                                                <div class="image-container">
-                                                                    <img src="<?php echo"../driverProfile/$pf" ?>" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
-                                                                    <div class="middle">
-                                                                        <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Upload" />
-                                                                        <input type="file" style="display: none;" id="profilePicture" name="profile_image" />
-                                                                    </div>
-
-                                                                    <!-- <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" /> -->
-                                                                </div>
-
-                                                                <div class="ml-auto">
-                                                                    <input type="button" class="btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />
-                                                                </div>
-                                                            </div>
-
-
-                                                        </div>
-                                                        <label for="" class="text-danger">
-                                                            <h3 class="text-danger">
-                                                                &nbsp&nbspUpload Profile
-                                                                <h3>
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="col-6">
-                                                        <div class="card-title mb-4">
-
-                                                            <div class="d-flex justify-content-start">
-                                                                <div class="image-container">
-                                                                    <img src="<?php echo"../driverProfile/$sideimg" ?>" id="imgProfilefls" style="width: 150px; height: 150px" class="img-thumbnail" />
-                                                                    <div class="middle">
-                                                                        <input type="button" class="btn btn-secondary" id="btnChangePicturefls" value="Upload" />
-                                                                        <input type="file" style="display: none;" id="profilePicturefls" name="licence_front" />
-                                                                    </div>
-
-                                                                    <!-- <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" /> -->
-                                                                </div>
-
-
-
-                                                            </div>
-                                                            <div class="ml-auto">
-                                                                <input type="button" class="btn btn-primary d-none" id="btnDiscardfls" value="Discard Changes" />
-                                                            </div>
-
-                                                        </div>
-                                                        <label for="" class="text-primary">
-                                                            <h3 class="text-primary">
-                                                                *Upload License Front Photo
-                                                            </h3>
-                                                        </label>
-                                                        <!-- front ls -->
-                                                    </div>
-                                                    <br>
-                                                    <div class="col-6">
-                                                        <div class="card-title mb-4">
-                                                            <div class="d-flex justify-content-start">
-                                                                <div class="image-container">
-                                                                    <img src="<?php echo"../driverProfile/$inside" ?>" id="imgProfilebls" style="width: 150px; height: 150px" class="img-thumbnail" />
-                                                                    <div class="middle">
-                                                                        <input type="button" class="btn btn-secondary" id="btnChangePicturebls" value="Upload" />
-                                                                        <input type="file" style="display: none;" id="profilePicturebls" name="licence_back" />
-                                                                    </div>
-
-                                                                    <!-- <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" /> -->
-                                                                </div>
-
-
-                                                            </div>
-                                                            <div class="ml-auto">
-                                                                <input type="button" class="btn btn-primary d-none" id="btnDiscardbls" value="Discard Changes" />
-                                                            </div>
-                                                        </div>
-                                                        <label for="">
-                                                            <h3 class="text-primary">
-                                                                *Upload License Back Photo
-                                                                <h3>
-                                                        </label>
-
-                                                    </div>
-                                                    
-
-                                                </div>
-                                            </div>
+                                        <form action="" method="post" enctype="multipart/form-data">
+                                          
                                             <div id="wizard_Time" class="tab-pane" role="tabpanel">
-                                            <div class="row">
-                                                <h2>Driver Information</h2>
+                                                <div class="row">
+                                                    <h2>Driver Information</h2>
                                                     <div class="col-lg-6 mb-2">
                                                         <div class="mb-3">
                                                             <label class="text-label form-label">Name*</label>
-                                                            <input type="text" name="name" class="form-control" placeholder="Enter Name" required="" value="<?php echo"$name" ?>">
+                                                            <input type="text" name="name" class="form-control" placeholder="Enter Name" required="" value="<?php echo "$name" ?>">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 mb-2">
                                                         <div class="mb-3">
                                                             <label class="text-label form-label"> UserName*</label>
-                                                            <input type="text" name="username" class="form-control" placeholder="Enter username" required=""value="<?php echo"$username" ?>">
+                                                            <input type="text" name="username" class="form-control" placeholder="Enter username" required="" value="<?php echo "$username" ?>">
                                                         </div>
                                                     </div>
 
                                                     <div class="col-lg-6 mb-2">
                                                         <div class="mb-3">
                                                             <label class="text-label form-label">Phone Number*</label>
-                                                            <input type="text" name="phoneNumber" class="form-control" placeholder="Enter Phonenumber" required=""value="<?php echo"$phno" ?>">
+                                                            <input type="text" name="phone" class="form-control" placeholder="Enter Phonenumber" required="" value="<?php echo "$phno" ?>">
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-12 mb-3">
+                                                    <div class="col-lg-6 mb-3">
                                                         <div class="mb-3">
                                                             <label class="text-label form-label">Address*</label>
-                                                            <input type="text" name="address" class="form-control" required="" placeholder="Enter Address" value="<?php echo"$address" ?>">
+                                                            <input type="text" name="address" class="form-control" required="" placeholder="Enter Address" value="<?php echo "$address" ?>">
                                                         </div>
                                                     </div>
-                                                    <div class="form-row-last">
+                                                    
+                                                    <div class="form-row-last ">
 
-<button id="submitbtn" name="btnregister"> Update Data</button>
-</div>
+                                                        <button id="submitbtn" name="btnregister"> Update Data</button>
+                                                        <br><br>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </form>
@@ -409,13 +333,13 @@ $address=$row['address'];
         <!-- Register modal -->
 
         <!--Lisense Modal -->
-       
+
     </div>
     <!--**********************************
         Main wrapper end
     ***********************************-->
     <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <!--**********************************
         Scripts
     ***********************************-->

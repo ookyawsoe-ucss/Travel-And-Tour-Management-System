@@ -28,22 +28,25 @@
     <link href="vendor/jquery-smartwizard/dist/css/smart_wizard.min.css" rel="stylesheet">
 
     <link href="css/style.css" rel="stylesheet">
-    
+
     <style>
         .zoom {
-  padding: px;
-  /* background-color: green; */
-  transition: transform .2s;
-  width: 200px;
-  height: 120px;
-  margin: 0 auto;
-}
+            padding: px;
+            /* background-color: green; */
+            transition: transform .2s;
+            width: 200px;
+            height: 120px;
+            margin: 0 auto;
+        }
 
-.zoom:hover {
-  -ms-transform: scale(1.5); /* IE 9 */
-  -webkit-transform: scale(1.5); /* Safari 3-8 */
-  transform: scale(1.5); 
-}
+        .zoom:hover {
+            -ms-transform: scale(1.5);
+            /* IE 9 */
+            -webkit-transform: scale(1.5);
+            /* Safari 3-8 */
+            transform: scale(1.5);
+        }
+
         button {
             border: none;
             width: 152px;
@@ -159,6 +162,74 @@
 
 <body>
 
+  
+
+<?php
+    include '../Connection.php';
+
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+
+        $delete = "select * from bus where id='$id'";
+        $ret = mysqli_query($connect, $delete);
+        $row = mysqli_fetch_array($ret);
+        $pf = $row['car_front_image'];
+        $sideimg = $row['car_inside_image'];
+        $inside = $row['car_side_image'];
+        $name = $row['car_name'];
+        $cartype = $row['car_type'];
+        $carlicense = $row['car_license_no'];
+
+
+        if (isset($_POST['btnregister'])) {
+
+            $username = $_POST['cname'];
+            $carlicense = $_POST['clicense'];
+            $ctype = $_POST['ctype'];
+            $image = $_FILES['profile_image']['name'];
+            $folder = "../carImage/";
+            if ($image) {
+                $filename = $folder . "" . $image;
+                $copy = copy($_FILES['profile_image']['tmp_name'], $filename);
+            }
+    
+            $sideimage = $_FILES['licence_front']['name'];
+            $folder = "../carImage/";
+    
+            if ($sideimage) {
+                $filename = $folder . "" . $sideimage;
+                $copy = copy($_FILES['licence_front']['tmp_name'], $filename);
+            }
+    
+            $insideimage = $_FILES['licence_back']['name'];
+            $folder = "../carImage/";
+    
+            if ($insideimage) {
+                $filename = $folder . "" . $insideimage;
+                $copy = copy($_FILES['licence_back']['tmp_name'], $filename);
+            }
+           
+
+            $insert = " update `bus` set          
+            `car_name`='$username' ,
+            `car_license_no`='$carlicense' ,
+            `car_type`='$ctype' ,
+            `car_front_image`='$image' ,
+            `car_inside_image`='$sideimage' ,
+            `car_side_image`='$insideimage'         
+            where `id`='$id'";
+
+            $ret = mysqli_query($connect, $insert);
+
+            if ($ret) {
+                echo "<script>alert('Successful Added ');</script>";
+                 echo"<script>window.location='bus.php';</script>";
+            } else {
+                echo mysqli_error($connect);
+            }
+        }
+    }
+    ?>
     <!--*******************
         Preloader start
     ********************-->
@@ -180,11 +251,11 @@
         <!--**********************************
             Nav header start
         ***********************************-->
-    	<?php
-		 include('../common/adminheader.php')
-		?>
+        <?php
+        include('../common/adminheader.php')
+        ?>
 
-       
+
         <!--**********************************
             Header end ti-comment-alt
         ***********************************-->
@@ -210,7 +281,7 @@
         <!--**********************************
             Footer start
         ***********************************-->
-        
+
         <!--**********************************
             Footer end
         ***********************************-->
@@ -226,8 +297,158 @@
             <!-- row -->
             <div class="container-fluid">
 
-       
-               
+
+
+                <div class="row " id="newregister">
+                    <div class="col-xl-12 col-xxl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title"> Edit Bus</h4>
+                            </div>
+                            <div class="card-body">
+                                <div id="smartwizard" class="form-wizard order-create">
+                                    <ul class="nav nav-wizard">
+                                        <li><a class="nav-link" href="#wizard_Services">
+                                                <span>1</span>
+                                            </a></li>
+                                        <li><a class="nav-link" href="#wizard_Time">
+                                                <span>2</span>
+                                            </a></li>
+
+                                    </ul>
+                                    <div class="tab-content">
+                                        <form action="" method="post" enctype="multipart/form-data">
+                                            <div id="wizard_Services" class="tab-pane" role="tabpanel">
+
+
+                                                <div class="row">
+
+                                                    <div class="col-12">
+                                                        <div class="card-title mb-4">
+                                                            <div class="d-flex justify-content-start">
+                                                                <div class="image-container">
+                                                                    <img src="../carImage/<?php echo"$pf"?>" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
+                                                                    <div class="middle">
+                                                                        <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Upload" />
+                                                                        <input type="file" style="display: none;" id="profilePicture" name="profile_image" />
+                                                                    </div>
+
+                                                                    <!-- <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" /> -->
+                                                                </div>
+
+                                                                <div class="ml-auto">
+                                                                    <input type="button" class="btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+                                                        <label for="" class="text-danger">
+                                                            <a href="">
+                                                                <h3 class="text-danger">
+                                                                    &nbsp&nbspUpload Bus Profile
+                                                                    <h3>
+                                                            </a>
+
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <div class="card-title mb-4">
+
+                                                            <div class="d-flex justify-content-start">
+                                                                <div class="image-container">
+                                                                    <img src="../carImage/<?php echo"$sideimg"?>" id="imgProfilefls" style="width: 150px; height: 150px" class="img-thumbnail" />
+                                                                    <div class="middle">
+                                                                        <input type="button" class="btn btn-secondary" id="btnChangePicturefls" value="Upload" />
+                                                                        <input type="file" style="display: none;" id="profilePicturefls" name="licence_front" />
+                                                                    </div>
+
+                                                                    <!-- <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" /> -->
+                                                                </div>
+
+
+
+                                                            </div>
+                                                            <div class="ml-auto">
+                                                                <input type="button" class="btn btn-primary d-none" id="btnDiscardfls" value="Discard Changes" />
+                                                            </div>
+
+                                                        </div>
+                                                        <label for="" class="text-primary">
+                                                            <h3 class="text-primary">
+                                                                *Upload Bus Side Photo
+                                                            </h3>
+                                                        </label>
+                                                        <!-- front ls -->
+                                                    </div>
+                                                    <br>
+                                                    <div class="col-6">
+                                                        <div class="card-title mb-4">
+                                                            <div class="d-flex justify-content-start">
+                                                                <div class="image-container">
+                                                                    <img src="../carImage/<?php echo"$inside"?>" id="imgProfilebls" style="width: 150px; height: 150px" class="img-thumbnail" />
+                                                                    <div class="middle">
+                                                                        <input type="button" class="btn btn-secondary" id="btnChangePicturebls" value="Upload" />
+                                                                        <input type="file" style="display: none;" id="profilePicturebls" name="licence_back" />
+                                                                    </div>
+
+                                                                    <!-- <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" /> -->
+                                                                </div>
+
+
+                                                            </div>
+                                                            <div class="ml-auto">
+                                                                <input type="button" class="btn btn-primary d-none" id="btnDiscardbls" value="Discard Changes" />
+                                                            </div>
+                                                        </div>
+                                                        <label for="">
+                                                            <h3 class="text-primary">
+                                                                *Upload Bus Inside Photo
+                                                                <h3>
+                                                        </label>
+
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            <div id="wizard_Time" class="tab-pane" role="tabpanel">
+                                                <div class="row">
+                                                    <h2>Driver Information</h2>
+                                                    <div class="col-lg-6 mb-2">
+                                                        <div class="mb-3">
+                                                            <label class="text-label form-label">Car Name*</label>
+                                                            <input type="text" name="cname" class="form-control" placeholder="Enter Car Name" required="" value="<?php echo"$name"?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 mb-2">
+                                                        <div class="mb-3">
+                                                            <label class="text-label form-label"> License No*</label>
+                                                            <input type="text" name="clicense" class="form-control" placeholder="Enter License No" value="<?php echo"$carlicense"?>">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6 mb-2">
+                                                        <div class="mb-3">
+                                                            <label class="text-label form-label">Car Type*</label>
+                                                            <input type="text" name="ctype" class="form-control" placeholder="Enter Car Type" value="<?php echo"$cartype"?>">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-row-last">
+
+                                                        <button id="submitbtn" name="btnregister"> Update Data</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
 
@@ -236,7 +457,37 @@
         <!-- Register modal -->
 
         <!--Lisense Modal -->
-       
+        <div class="modal fade" id="exampleModalCenter">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Bus Images</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal">
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12 zoom">
+                                <img class="rounded" width="200" src="../images/International-drivers-permit-singapore-4.jpg" alt="inside image">
+                                <label for="">Front Image</label>
+                            </div>
+
+                            <div class="col-6 zoom">
+                                <img class="rounded" width="200" src="../images/International-drivers-permit-singapore-4.jpg" alt="inside image">
+                                <label for="">Side Image</label>
+                            </div>
+                            <div class="col-6 zoom">
+                                <img class="rounded" width="200" src="../images/International-drivers-permit-singapore-4.jpg" alt="side image">
+                                <label for="">Inside Image</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!--**********************************
         Main wrapper end
@@ -257,8 +508,7 @@
     <script src="js/plugins-init/datatables.init.js"></script>
 
     <script src="vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
-        <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
     <script src="js/custom.min.js"></script>
     <script src="js/dlabnav-init.js"></script>
     <script src="js/demo.js"></script>
@@ -273,7 +523,8 @@
     <!-- Form validate init -->
     <script src="js/plugins-init/jquery.validate-init.js"></script>
 
-
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <!-- Form Steps -->
     <script src="vendor/jquery-smartwizard/dist/js/jquery.smartWizard.js"></script>
     <script src="vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>

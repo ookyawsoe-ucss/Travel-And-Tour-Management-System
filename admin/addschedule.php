@@ -141,7 +141,7 @@
             for ($i = 0; $i < $fileCount; $i++) {
                 $fileName = $_FILES['file']['name'][$i];
 
-                $sql = "insert into package (p_name,price,available_count,duration,description,c_id,d_id,departure_date,arrival_date,start_time,package_image) values('$name','$price','$person','$dur','$detail','$bus','$driver','$fromdate2','$fromdate1','$time','$fileName')";
+                $sql = "insert into package (p_name,price,available_count,duration,description,carname,dname,departure_date,arrival_date,start_time,package_image) values('$name','$price','$person','$dur','$detail','$bus','$driver','$fromdate2','$fromdate1','$time','$fileName')";
                 if ($connect->query($sql) === true) {
                     echo "<script>alert('Successful Added ');</script>";
                 } else {
@@ -238,7 +238,7 @@
 										      $name=$row['car_name'];
 										      $id=$row['id'];
 
-										      echo "<option value='$id'>$name</option>";
+										      echo "<option value='$name'>$name</option>";
 										    }
 										    ?>
                                                    
@@ -258,7 +258,7 @@
 										      $name=$row['name'];
 										      $id=$row['id'];
 
-										      echo "<option value='$id'>$name</option>";
+										      echo "<option value='$name'>$name</option>";
 										    }
 										    ?>
                                                 </select>

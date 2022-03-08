@@ -28,22 +28,25 @@
     <link href="vendor/jquery-smartwizard/dist/css/smart_wizard.min.css" rel="stylesheet">
 
     <link href="css/style.css" rel="stylesheet">
-    
+
     <style>
         .zoom {
-  padding: px;
-  /* background-color: green; */
-  transition: transform .2s;
-  width: 200px;
-  height: 120px;
-  margin: 0 auto;
-}
+            padding: px;
+            /* background-color: green; */
+            transition: transform .2s;
+            width: 200px;
+            height: 120px;
+            margin: 0 auto;
+        }
 
-.zoom:hover {
-  -ms-transform: scale(1.5); /* IE 9 */
-  -webkit-transform: scale(1.5); /* Safari 3-8 */
-  transform: scale(1.5); 
-}
+        .zoom:hover {
+            -ms-transform: scale(1.5);
+            /* IE 9 */
+            -webkit-transform: scale(1.5);
+            /* Safari 3-8 */
+            transform: scale(1.5);
+        }
+
         button {
             border: none;
             width: 152px;
@@ -180,11 +183,11 @@
         <!--**********************************
             Nav header start
         ***********************************-->
-      
+
         <?php
-		 include('../common/adminheader.php')
-		?>
-       
+        include('../common/adminheader.php')
+        ?>
+
         <!--**********************************
             Header end ti-comment-alt
         ***********************************-->
@@ -192,7 +195,7 @@
         <!--**********************************
             Sidebar start
         ***********************************-->
-      
+
         <!--**********************************
             Sidebar end
         ***********************************-->
@@ -256,7 +259,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <?php
+                                                        <?php
                                                         include "../Connection.php";
                                                         $select = "select * from driver";
                                                         $ret = mysqli_query($connect, $select);
@@ -300,7 +303,7 @@
 
 
 
-                                                     
+
 
 
 
@@ -340,50 +343,45 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                    <form action="driver.php" method="POST">
+                        <form action="driver.php" method="POST">
 
 
 
-    <div class="form-group">
-        <label>  Id </label>
-        <input type="text" name="fname" id="fname" class="form-control"
-            placeholder="Enter First Name" readonly>
-    </div>
+                            <div class="form-group">
+                                <label> Id </label>
+                                <input type="text" name="fname" id="fname" class="form-control" placeholder="Enter First Name" readonly>
+                            </div>
 
-    <div class="form-group">
-        <label>  Name </label>
-        <input type="text" name="name" id="lname" class="form-control"
-            placeholder="Enter Last Name">
-    </div>
+                            <div class="form-group">
+                                <label> Name </label>
+                                <input type="text" name="name" id="lname" class="form-control" placeholder="Enter Last Name">
+                            </div>
 
-    <div class="form-group">
-        <label> User Name </label>
-        <input type="text" name="urname" id="course" class="form-control"
-            placeholder="Enter Course">
-    </div>
+                            <div class="form-group">
+                                <label> User Name </label>
+                                <input type="text" name="urname" id="course" class="form-control" placeholder="Enter Course">
+                            </div>
 
-    <div class="form-group">
-        <label> Phone </label>
-        <input type="text" name="phone" id="contact" class="form-control"
-            placeholder="Enter Phone Number">
-    </div>
-    <div class="form-group">
-        <label> Address </label>
-        <input type="text" name="address" id="phone" class="form-control"
-            placeholder="Enter Phone Number">
-    </div>
+                            <div class="form-group">
+                                <label> Phone </label>
+                                <input type="text" name="phone" id="contact" class="form-control" placeholder="Enter Phone Number">
+                            </div>
+                            <div class="form-group">
+                                <label> Address </label>
+                                <input type="text" name="address" id="phone" class="form-control" placeholder="Enter Phone Number">
+                            </div>
 
-<div class="modal-footer">
-<button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
-    <button type="submit" name="updatedata" class="btn btn-primary">Update Data</button>
-</div>
-</form>
-                       </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" name="updatedata" class="btn btn-primary">Update Data</button>
+                            </div>
+                        </form>
                     </div>
-                   
                 </div>
+
             </div>
         </div>
+    </div>
     </div>
     <!--**********************************
         Main wrapper end
@@ -419,7 +417,7 @@
     <!-- Form validate init -->
     <script src="js/plugins-init/jquery.validate-init.js"></script>
     <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <!-- Form Steps -->
     <script src="vendor/jquery-smartwizard/dist/js/jquery.smartWizard.js"></script>
@@ -599,16 +597,16 @@
         });
     </script>
 
-<script>
-        $(document).ready(function () {
+    <script>
+        $(document).ready(function() {
 
-            $('.editbtn').on('click', function () {
+            $('.editbtn').on('click', function() {
 
                 $('#editmodal').modal('show');
 
                 $tr = $(this).closest('tr');
 
-                var data = $tr.children("td").map(function () {
+                var data = $tr.children("td").map(function() {
                     return $(this).text();
                 }).get();
 

@@ -72,7 +72,7 @@
     		<div class="row">
         <?php
          include "Connection.php";
-         $select = "select * from package";
+         $select = "select * from package group by(p_name)";
          $ret = mysqli_query($connect, $select);
          $count = mysqli_num_rows($ret);
  
