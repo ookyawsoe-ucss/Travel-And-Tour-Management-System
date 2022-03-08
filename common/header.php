@@ -13,9 +13,11 @@
 				<li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
 				<?php
 				session_start();
-				$uid = $_SESSION['id'] ?? "";
+
 
 				$name = $_SESSION['name'] ?? "";
+				$uid = $_SESSION['id'] ?? "";
+
 				$profile_image = $_SESSION['profile_image'] ?? "";
 				
 				if ($name) { ?>
@@ -25,6 +27,7 @@
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="font-family: 'Times New Roman', Times, serif;">
 							<a class="dropdown-item text-info" href="userprofile.php?"><span class="icon-user"></span>&nbsp;&nbsp;View Profile</a><hr>
 							<a class="dropdown-item text-info" href="logout.php"><span class="icon-sign-out"></span>&nbsp;&nbsp;Logout</a>
+
 						</div>
 					</div>
 
