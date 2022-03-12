@@ -61,11 +61,11 @@
 
    
 
-    <section class="ftco-section" id="packages">
+    <section class="ftco-section justify-content-center" id="packages">
     	<div class="container-fluid px-4">
-    		<div class="row justify-content-center">
+    		<div class="row justify-content-center mb-5">
           <div class="col-md-12 heading-section text-center ftco-animate mb-5">
-            <h2 class="mb-2" >Our Packages</h2>
+            <h2 class="mb-2 text-info">Our Packages</h2>
           </div>
         </div>
        
@@ -81,19 +81,20 @@
              $id = $row['id'];
              $pname = $row['p_name'];
              $image = $row['package_image'];
+             $price = $row['price'];
 
 
              
         echo"
     			<div class='col-md-3'>
     				<div class='car-wrap ftco-animate'>
-    					<div class='img d-flex align-items-end' style='background-image: url(packageImage/$image);'>
-    		
+    					<div class='img d-flex align-items-center' style='background-image: url(packageImage/$image);'>    		
     					</div>
     					<div class='text p-4 text-center'>
     						<h2 class='mb-0'><a href='#'>$pname</a></h2>
-    						<span>''</span>
-    						<p class='d-flex mb-0 d-block'><a href='#' class='btn btn-black btn-outline-black mr-1'>Book now</a> <a href='#' class='btn btn-black btn-outline-black ml-1'>Details</a></p>
+    						<span >$price mmk</span>
+    						<p class='d-flex mb-0 d-block'><a href='bookdetail.php?id=$id' class='btn btn-black btn-outline-black mr-1'>Book now</a>
+                 <a href='packagedetail.php?id=$pname' class='btn btn-black btn-outline-black ml-1'>Details</a></p>
     					</div>
     				</div>
     			</div>
@@ -109,7 +110,7 @@
       <div class="container">
         <div class="row justify-content-center mb-5">
           <div class="col-md-7 text-center heading-section ftco-animate">
-            <h2 class="mb-3">Hotels</h2>
+            <h2 class="mb-3 text-info">Hotels</h2>
           </div>
         </div>
         <div class="row ftco-animate">
@@ -175,7 +176,7 @@
       <div class="container">
         <div class="row justify-content-center mb-5">
           <div class="col-md-7 heading-section text-center ftco-animate">
-            <h2>Recent Activity</h2>
+            <h2 class="text-info">Recent Activity</h2>
           </div>
         </div>
         <div class="row d-flex">

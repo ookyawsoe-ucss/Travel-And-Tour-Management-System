@@ -70,7 +70,7 @@
 								<div class="media">
 										<img src="../admin/images/list.png" alt="schedule" width="100px">
 											<div class="media-body text-white">
-										<p class="mb-1">Total Schedule</p>
+										<p class="mb-1">Total Package</p>
 										<?php
 										include "../Connection.php";
 										$select = "SELECT * FROM package";
@@ -94,7 +94,7 @@
 								<img src="../admin/images/user.png" alt="User Image" width="100px">
 
 									<div class="media-body text-white">
-										<p class="mb-1">Total Customer</p>
+										<p class="mb-1">Total User</p>
 										<?php
 										include "../Connection.php";
 										$select = "SELECT * FROM customer";
@@ -184,22 +184,6 @@
 							</div>
 						</div>
 					</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 				</div>
 			</div>
 		</div>

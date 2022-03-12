@@ -100,7 +100,7 @@
                 <div class="project-page d-flex justify-content-between align-items-center flex-wrap">
 
                     <div class="mb-4">
-                        <a href="addschedule.php" class="btn btn-primary btn-rounded fs-18">+ Add New Package</a>
+                        <a href="addschedule.php" class="btn btn-primary btn-rounded fs-14">+ Add New Package</a>
 
                     </div>
                 </div>
@@ -116,19 +116,19 @@
                                                 <table id="example3" class="display" style="min-width: 845px">
                                                     <thead>
                                                         <tr>
-                                                            <th>Image</th>
-                                                            <th>ID</th>
-                                                            <th>Package Name</th>
-                                                            <th>Car Name</th>
-                                                            <th>Driver Name</th>
-                                                            <th>Departure Date</th>
-                                                            <th>Arrival Date</th>
-                                                            <th>Start_Time</th>
-                                                            <th>Duration</th>
-                                                            <th>Available Count </th>
-                                                            <th>Price</th>
-                                                            <th>Description</th>
-                                                            <th>Action</th>
+                                                            <th><small>Image</small></th>
+                                                            <th><small>ID</small></th>
+                                                            <th><small>Package Name</small></th>
+                                                            <th><small>Car Name</small></th>
+                                                            <th><small>Driver Name</small></th>
+                                                            <th><small>Departure Date</small></th>
+                                                            <th><small>Arrival Date</small></th>
+                                                            <th><small>Start Time</small></th>
+                                                            <th><small>Duration</small></th>
+                                                            <th><small>Available Count</small> </th>
+                                                            <th><small>Price</small></th>
+                                                            <th><small>Description</small></th>
+                                                            <th><small>Action</small></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
