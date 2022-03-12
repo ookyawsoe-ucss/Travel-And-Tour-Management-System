@@ -37,13 +37,13 @@
     <link href="vendor/jquery-asColorPicker/css/asColorPicker.min.css" rel="stylesheet">
     <!-- Material color picker -->
     <link href="vendor/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
-	
+
     <!-- Pick date -->
     <link rel="stylesheet" href="vendor/pickadate/themes/default.css">
     <link rel="stylesheet" href="vendor/pickadate/themes/default.date.css">
-	<link href="../icon.css?family=Material+Icons" rel="stylesheet">
+    <link href="../icon.css?family=Material+Icons" rel="stylesheet">
 
- 
+
 
     <style>
         /* body{
@@ -120,51 +120,51 @@
         Main wrapper start
     ***********************************-->
     <?php
-        include('../Connection.php');
+    include('../Connection.php');
 
-        include('../common/adminheader.php');
-        if (isset($_POST["btnsubmit"])) {
-            $name=$_POST['pname'];  
-            $price=$_POST['pprice'];  
-            $person=$_POST['aperson'];
-            $dur=$_POST['dday'];  
-            $detail=$_POST['desc'];  
-            $bus=$_POST['sbus'];  
-            $driver=$_POST['sdriver'];  
-            $adate=$_POST['adate'];  
-            $ddate=$_POST['ddate'];  
-            $time=$_POST['stime'];  
-            $fromdate1 = date("Y-m-d", strtotime($adate));
-            $fromdate2 = date("Y-m-d", strtotime($ddate));
+    include('../common/adminheader.php');
+    if (isset($_POST["btnsubmit"])) {
+        $name = $_POST['pname'];
+        $price = $_POST['pprice'];
+        $person = $_POST['aperson'];
+        $dur = $_POST['dday'];
+        $detail = $_POST['desc'];
+        $bus = $_POST['sbus'];
+        $driver = $_POST['sdriver'];
+        $adate = $_POST['adate'];
+        $ddate = $_POST['ddate'];
+        $time = $_POST['stime'];
+        $fromdate1 = date("Y-m-d", strtotime($adate));
+        $fromdate2 = date("Y-m-d", strtotime($ddate));
 
-            $fileCount = count($_FILES['file']['name']);
-            for ($i = 0; $i < $fileCount; $i++) {
-                $fileName = $_FILES['file']['name'][$i];
+        $fileCount = count($_FILES['file']['name']);
+        for ($i = 0; $i < $fileCount; $i++) {
+            $fileName = $_FILES['file']['name'][$i];
 
-                $sql = "insert into package (p_name,price,available_count,duration,description,carname,dname,departure_date,arrival_date,start_time,package_image) values('$name','$price','$person','$dur','$detail','$bus','$driver','$fromdate2','$fromdate1','$time','$fileName')";
-                if ($connect->query($sql) === true) {
-                    echo "<script>alert('Successful Added ');</script>";
-                } else {
-                    echo "<script>alert('lee error ');</script>";
-                }
-                move_uploaded_file($_FILES['file']['tmp_name'][$i], '../packageImage/' . $fileName);
+            $sql = "insert into package (p_name,price,available_count,duration,description,carname,dname,departure_date,arrival_date,start_time,package_image) values('$name','$price','$person','$dur','$detail','$bus','$driver','$fromdate2','$fromdate1','$time','$fileName')";
+            if ($connect->query($sql) === true) {
+                echo "<script>alert('Successful Added ');</script>";
+            } else {
+                echo "<script>alert('lee error ');</script>";
             }
+            move_uploaded_file($_FILES['file']['tmp_name'][$i], '../packageImage/' . $fileName);
         }
+    }
 
-        ?>
+    ?>
     <div id="main-wrapper">
 
         <!--**********************************
             Nav header start
         ***********************************-->
-      
+
 
         <div class="content-body">
             <!-- row -->
             <div class="container-fluid">
 
 
-            <div class="row">
+                <div class="row">
                     <div class="col-xl-12 col-xxl-12">
                         <div class="card">
                             <div class="card-header">
@@ -172,173 +172,171 @@
                             </div>
                             <div class="card-body">
 
-								<div id="smartwizard" class="form-wizard order-create">
+                                <div id="smartwizard" class="form-wizard order-create">
 
-									<ul class="nav nav-wizard">
-										<li><a class="nav-link" href="#wizard_Service"> 
-											<span>1</span> 
-										</a></li>
-										<li><a class="nav-link" href="#wizard_Time">
-											<span>2</span>
-										</a></li>
-										
-									</ul>
+                                    <ul class="nav nav-wizard">
+                                        <li><a class="nav-link" href="#wizard_Service">
+                                                <span>1</span>
+                                            </a></li>
+                                        <li><a class="nav-link" href="#wizard_Time">
+                                                <span>2</span>
+                                            </a></li>
+
+                                    </ul>
                                     <form action="" method="post" enctype="multipart/form-data">
 
-									<div class="tab-content">
-                                    
+                                        <div class="tab-content">
 
-										<div id="wizard_Service" class="tab-pane" role="tabpanel">
-											<div class="row">
-												<div class="col-lg-6 mb-2">
-													<div class="mb-3">
-														<label class="text-label form-label">Package Name*</label>
-														<input type="text" name="pname" class="form-control" placeholder="Enter Package Name" required="">
-													</div>
-												</div>
-												<div class="col-lg-6 mb-2">
-													<div class="mb-3">
-														<label class="text-label form-label">Price*</label>
-														<input type="text" name="pprice" class="form-control" placeholder="Enter Price" required="">
-													</div>
-												</div>
-												<div class="col-lg-6 mb-2">
-													<div class="mb-3">
-														<label class="text-label form-label">Available Person*</label>
-														<input type="number" class="form-control" id="inputGroupPrepend2" aria-describedby="inputGroupPrepend2" placeholder="Enter Available Person " required="" name="aperson">
-													</div>
-												</div>
-												<div class="col-lg-6 mb-2">
-													<div class="mb-3">
-														<label class="text-label form-label">Duration Day *</label>
-														<input type="number" name="dday" class="form-control" placeholder="Enter Duration Day" required="" >
-													</div>
-												</div>
-												<div class="col-lg-12 mb-3">
-													<div class="mb-3">
-														<label class="text-label form-label">Description*</label>
-                                                        <input type="text" name="desc" class="form-control" placeholder="Enter Package Detail" required="">
-													</div>
-												</div>
-											</div>
-										</div>
-										<div id="wizard_Time" class="tab-pane" role="tabpanel">
-											<div class="row">
-												<div class="col-lg-6 mb-2">
-                                                <label class="form-label">Select Bus</label>
-                                                <select id="inputState" class="default-select form-control wide"name="sbus">
-                                                    <option selected="">Select Bus...</option>
-                                                    <?php
-										    $select="Select * from bus";
-										    $ret=mysqli_query($connect,$select);
-										    $count=mysqli_num_rows($ret);
-										    for ($i=0; $i < $count ; $i++) 
-										    { 
-										      $row=mysqli_fetch_array($ret);
-										      $name=$row['car_name'];
-										      $id=$row['id'];
 
-										      echo "<option value='$name'>$name</option>";
-										    }
-										    ?>
-                                                   
-                                                </select>
-												</div>
-                                                <div class="col-lg-6 mb-2">
-                                                <label class="form-label">Select Driver</label>
-                                                <select id="inputState" class="default-select form-control wide" name="sdriver">
-                                                    <option selected="">Select Driver...</option>
-                                                    <?php
-										    $select="Select * from driver";
-										    $ret=mysqli_query($connect,$select);
-										    $count=mysqli_num_rows($ret);
-										    for ($i=0; $i < $count ; $i++) 
-										    { 
-										      $row=mysqli_fetch_array($ret);
-										      $name=$row['name'];
-										      $id=$row['id'];
-
-										      echo "<option value='$name'>$name</option>";
-										    }
-										    ?>
-                                                </select>
-												</div>
-												<div class="col-lg-6 mb-2">
-                                                <label class="form-label">Depature Date</label>
-                                            <input type="date" class="form-control" id="mdate" name="ddate"> 
+                                            <div id="wizard_Service" class="tab-pane" role="tabpanel">
+                                                <div class="row">
+                                                    <div class="col-lg-6 mb-2">
+                                                        <div class="mb-3">
+                                                            <label class="text-label form-label">Package Name*</label>
+                                                            <input type="text" name="pname" class="form-control" placeholder="Enter Package Name" required="">
+                                                        </div>
                                                     </div>
                                                     <div class="col-lg-6 mb-2">
-                                                    <label class="form-label">Arrival Date</label>
-                                            <input type="date" class="form-control" placeholder="2017-06-04" id="mdate"name="adate"> 
+                                                        <div class="mb-3">
+                                                            <label class="text-label form-label">Price*</label>
+                                                            <input type="text" name="pprice" class="form-control" placeholder="Enter Price" required="">
+                                                        </div>
                                                     </div>
                                                     <div class="col-lg-6 mb-2">
-                                                    <label class="form-label">Start Time</label>
-                                            <div class="input-group clockpicker">
-                                                <input type="text" class="form-control" value="09:30" name="stime">
-                                            </div>
+                                                        <div class="mb-3">
+                                                            <label class="text-label form-label">Available Person*</label>
+                                                            <input type="number" class="form-control" id="inputGroupPrepend2" aria-describedby="inputGroupPrepend2" placeholder="Enter Available Person " required="" name="aperson">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 mb-2">
+                                                        <div class="mb-3">
+                                                            <label class="text-label form-label">Duration Day *</label>
+                                                            <input type="number" name="dday" class="form-control" placeholder="Enter Duration Day" required="">
+                                                        </div>
                                                     </div>
                                                     <div class="col-lg-12 mb-3">
-                                                            <div class="mb-3">
-                                                                <label class="text-label form-label">Select Images for package*</label>
-                                                                <div class="form-file">
-                                                                <input type="file" class="form-file-input form-control" name="file[]" id="file" multiple>
-                                                </div>
-                                                
-                                            </div>
+                                                        <div class="mb-3">
+                                                            <label class="text-label form-label">Description*</label>
+                                                            <input type="text" name="desc" class="form-control" placeholder="Enter Package Detail" required="">
                                                         </div>
-                                                        <div class="form-row-last text-center">
-                                                        <!-- <input type="submit" id="submitbtn" name="btnsubmit" value="Register Now" class="btn btn-sm btn-danger"> -->
-                                                        <button type="submit" id="submitbtn" name="btnsubmit" class="button">Register Now</button>
                                                     </div>
+                                                </div>
+                                            </div>
+                                            <div id="wizard_Time" class="tab-pane" role="tabpanel">
+                                                <div class="row">
+                                                    <div class="col-lg-6 mb-2">
+                                                        <label class="form-label">Select Bus</label>
+                                                        <select id="inputState" class="default-select form-control wide" name="sbus">
+                                                            <option selected="">Select Bus...</option>
+                                                            <?php
+                                                            $select = "Select * from bus";
+                                                            $ret = mysqli_query($connect, $select);
+                                                            $count = mysqli_num_rows($ret);
+                                                            for ($i = 0; $i < $count; $i++) {
+                                                                $row = mysqli_fetch_array($ret);
+                                                                $name = $row['car_name'];
+                                                                $id = $row['id'];
+
+                                                                echo "<option value='$name'>$name</option>";
+                                                            }
+                                                            ?>
+
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-lg-6 mb-2">
+                                                        <label class="form-label">Select Driver</label>
+                                                        <select id="inputState" class="default-select form-control wide" name="sdriver">
+                                                            <option selected="">Select Driver...</option>
+                                                            <?php
+                                                            $select = "Select * from driver";
+                                                            $ret = mysqli_query($connect, $select);
+                                                            $count = mysqli_num_rows($ret);
+                                                            for ($i = 0; $i < $count; $i++) {
+                                                                $row = mysqli_fetch_array($ret);
+                                                                $name = $row['name'];
+                                                                $id = $row['id'];
+
+                                                                echo "<option value='$name'>$name</option>";
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-lg-6 mb-2">
+                                                        <label class="form-label">Depature Date</label>
+                                                        <input type="date" class="form-control" id="mdate" name="ddate">
+                                                    </div>
+                                                    <div class="col-lg-6 mb-2">
+                                                        <label class="form-label">Arrival Date</label>
+                                                        <input type="date" class="form-control" placeholder="2017-06-04" id="mdate" name="adate">
+                                                    </div>
+                                                    <div class="col-lg-6 mb-2">
+                                                        <label class="form-label">Start Time</label>
+                                                        <div class="input-group clockpicker">
+                                                            <input type="text" class="form-control" value="09:30" name="stime">
                                                         </div>
-                                                   
-										
-												
-											</div>
+                                                    </div>
+                                                    <div class="col-lg-12 mb-3">
+                                                        <div class="mb-3">
+                                                            <label class="text-label form-label">Select Images for package*</label>
+                                                            <div class="form-file">
+                                                                <input type="file" class="form-file-input form-control" name="file[]" id="file" multiple>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row-last text-center">
+                                                        <!-- <input type="submit" id="submitbtn" name="btnsubmit" value="Register Now" class="btn btn-sm btn-danger"> -->
+                                                        <button type="submit" id="submitbtn" name="btnsubmit" class="btn btn-md btn-info">Register Now</button>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
                                             <!--  -->
-									</div>
-									
-                                </form>
-									</div>
-								</div>
-                          
+                                        </div>
+
+                                    </form>
+                                </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
-                    
             </div>
-            
+
         </div>
 
-        <!-- Register modal -->
+    </div>
 
-        <!--Lisense Modal -->
-        <div class="modal fade" id="exampleModalCenter">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal">
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-6 zoom">
-                                <img class="rounded" width="200" src="../images/International-drivers-permit-singapore-4.jpg" alt="frontlicense">
-                            </div>
-                            <div class="col-6 zoom">
-                                <img class="rounded" width="200" src="../images/International-drivers-permit-singapore-4.jpg" alt="back license">
-                            </div>
+    <!-- Register modal -->
+
+    <!--Lisense Modal -->
+    <div class="modal fade" id="exampleModalCenter">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6 zoom">
+                            <img class="rounded" width="200" src="../images/International-drivers-permit-singapore-4.jpg" alt="frontlicense">
+                        </div>
+                        <div class="col-6 zoom">
+                            <img class="rounded" width="200" src="../images/International-drivers-permit-singapore-4.jpg" alt="back license">
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <!--**********************************
         Main wrapper end
@@ -373,13 +371,13 @@
     <script src="js/plugins-init/jquery.validate-init.js"></script>
 
     <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <!-- Form Steps -->
     <script src="vendor/jquery-smartwizard/dist/js/jquery.smartWizard.js"></script>
     <script src="vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
 
-        
+
     <!-- Daterangepicker -->
     <!-- momment js is must -->
     <script src="vendor/moment/moment.min.js"></script>

@@ -32,6 +32,8 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="profile.css">
   <script src="./js/profile.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -43,40 +45,40 @@
 
   $uid = $_SESSION['id'] ?? "";
 
-            $select = "select * from customer WHERE id ='$uid'";
-        
-            $ret=mysqli_query($connect,$select);
-            $row=mysqli_fetch_array($ret);
-           
-             
-              $name = $row['name'];
-              $username = $row['username'];
-              $gender = $row['gender'];
-              $email = $row['email'];
-              $phone = $row['phone'];
-              $nrc = $row['nrc_no'];
-              $address = $row['address'];
-              $password = $row['password'];
-              $profile_image = $row['profile_image'];
+  $select = "select * from customer WHERE id ='$uid'";
+
+  $ret = mysqli_query($connect, $select);
+  $row = mysqli_fetch_array($ret);
 
 
-              if (isset($_POST['btnregister'])) {
+  $name = $row['name'];
+  $username = $row['username'];
+  $gender = $row['gender'];
+  $email = $row['email'];
+  $phone = $row['phone'];
+  $nrc = $row['nrc_no'];
+  $address = $row['address'];
+  $password = $row['password'];
+  $profile_image = $row['profile_image'];
 
-                $name = $_POST['txtname'];
-                $username = $_POST['txtusername'];
-                $phone = $_POST['txtphone'];
-                $email = $_POST['txtemail'];
-                $nrc = $_POST['txtnrc'];
-                $pass = $_POST['txtpass'];
-                $address = $_POST['txtaddress'];
-                $image = $_FILES['txtprofile']['name'];
-                $folder = "userProfile/";
-                if ($image) {
-                  $filename = $folder . "" . $image;
-                  $copy = copy($_FILES['txtprofile']['tmp_name'], $filename);
-                }
-            
-                $insert="update  customer 
+
+  if (isset($_POST['btnregister'])) {
+
+    $name = $_POST['txtname'];
+    $username = $_POST['txtusername'];
+    $phone = $_POST['txtphone'];
+    $email = $_POST['txtemail'];
+    $nrc = $_POST['txtnrc'];
+    $pass = $_POST['txtpass'];
+    $address = $_POST['txtaddress'];
+    $image = $_FILES['txtprofile']['name'];
+    $folder = "userProfile/";
+    if ($image) {
+      $filename = $folder . "" . $image;
+      $copy = copy($_FILES['txtprofile']['tmp_name'], $filename);
+    }
+
+    $insert = "update  customer 
               set name='$name' ,          
               username='$username' ,
               email='$email' ,
@@ -88,16 +90,16 @@
             
               where id='$uid'
               ";
-               
-                $ret = mysqli_query($connect, $insert);
-            
-                if ($ret) {
-                  echo "<script>alert('Successful Added ');</script>";
-                  //  echo"<script>window.location='buslist.php';</script>";
-                } else {
-                  echo mysqli_error($connect);
-                }
-              }
+
+    $ret = mysqli_query($connect, $insert);
+
+    if ($ret) {
+      echo "<script>alert('Successful Added ');</script>";
+      //  echo"<script>window.location='buslist.php';</script>";
+    } else {
+      echo mysqli_error($connect);
+    }
+  }
 
   ?>
   <!-- END nav -->
@@ -125,13 +127,15 @@
 
               </div>
             </div>
+            
           </div>
+          
           <div class="col-lg-7 col-md-4 ">
-           
 
-             
-             <?php
-          echo "
+
+
+            <?php
+            echo "
           <h2 class='text-white'>Your Information</h2>
           <div class='form-row'>
             <div class='col-6'>
@@ -167,24 +171,76 @@
               
           </div>
           ";
-         ?>
+            ?>
             <div class="form-group">
               <br>
               <input type="submit" value="Update" name="btnregister" class="btn btn-primary py-2 px-4 ">
+              <a href="" data-toggle="collapse" data-target="#demo">&nbsp &nbsp&nbspSee Booking List</a>
 
             </div>
           </div>
+         
       </form>
-
+      
     </div>
 
   </div>
+  
   </div>
 
   </div>
 
 
+  <div class="container">
+            <style>
+              table {
+                border-collapse: collapse;
+                width: 100%;
+              }
 
+              th,
+              td {
+                padding: 8px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+              }
+
+              tr:hover {
+                background-color: coral;
+              }
+            </style>
+            <div id="demo" class="collapse ">
+              <table>
+                <tr>
+                  <th> Package Name</th>
+                  <th>Total Person</th>
+                  <th>Price</th>
+                  <th>Total PRice</th>
+                  <th>Departure Date Time</th>
+                </tr>
+                <tr>
+                  <td>Peter</td>
+                  <td>Griffin</td>
+                  <td>$100</td>
+                </tr>
+                <tr>
+                  <td>Lois</td>
+                  <td>Griffin</td>
+                  <td>$150</td>
+                </tr>
+                <tr>
+                  <td>Joe</td>
+                  <td>Swanson</td>
+                  <td>$300</td>
+                </tr>
+                <tr>
+                  <td>Cleveland</td>
+                  <td>Brown</td>
+                  <td>$250</td>
+                </tr>
+              </table>
+            </div>
+          </div>
 
 
 

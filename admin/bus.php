@@ -235,7 +235,7 @@
 
                                         <div class="card-body">
                                             <div class="mb-4 ">
-                                                <a href="registerbus.php" class="btn btn-primary btn-rounded fs-18">+ Add New</a>
+                                                <a href="registerbus.php" class="btn btn-primary btn-rounded fs-14">+ Add New Bus</a>
 
 
                                             </div>
@@ -243,16 +243,13 @@
                                                 <table id="example3" class="display" style="min-width: 845px">
                                                     <thead>
                                                         <tr>
-                                                           
-                                                            <th>No</th>
-                                                            <th>Bus Name</th>
-                                                            <th>License No</th>
-                                                            <th>Car Type</th>
-                                                            
-
-                                                            <th>Add Date</th>
-
-                                                            <th>Action</th>
+                                                           <th><small>Bus Image</small></th>
+                                                            <th><small>No</small></th>
+                                                            <th><small>Bus Name</small></th>
+                                                            <th><small>License No</small></th>
+                                                            <th><small>Car Type</small></th>
+                                                            <th><small>Created Date</small></th>
+                                                            <th><small>Action</small></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -291,7 +288,7 @@
                                                                     </a>
                                                                     <!-- <button type='button' class='btn btn-primary mb-2' data-bs-toggle='modal' data-bs-target='#exampleModalCenter'>Modal centered</button> -->
                                                                     &nbsp;
-                                                                    <a href='#' class='btn btn-danger '><b>Delete</b>
+                                                                    <a href='deletebus.php?id=$id' class='btn btn-danger '><b>Delete</b>
                                                                     </a>
                                                                 </div>
                                                             </td>

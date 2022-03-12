@@ -38,8 +38,8 @@
 								</a>
 								<div class="dropdown-menu dropdown-menu-end">
 									<a href="index.php" class="dropdown-item ai-icon">
-										<i class="fa-solid fa-user text-info"></i>
-										<span class="ms-2 text-info">Admin Profile </span>
+										<i class="fa-solid fa-unlock-keyhole text-info"></i>
+										<span class="ms-2 text-info">Change Password </span>
 									</a>
 									<hr>
 
@@ -134,6 +134,17 @@
 
 						</ul>
 					</li>
+					<!-- <br>
+					<hr>
+					<li><a class="has-arrow " href="../logout.php" aria-expanded="false">
+							<i class="fa-solid fa-sign-out"></i> <span class="nav-text">Logout</span>
+						</a>
+						<ul aria-expanded="false">
+							<li><a href="logout.php">Logout</a></li>
+
+
+						</ul>
+					</li> -->
 				</ul>
 
 

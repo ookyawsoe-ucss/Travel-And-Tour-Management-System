@@ -238,7 +238,7 @@
 
                                         <div class="card-body">
                                             <div class="mb-4 ">
-                                                <a href="registerdriver.php" class="btn btn-primary btn-rounded fs-18">+ Add New Driver</a>
+                                                <a href="registerdriver.php" class="btn btn-primary btn-rounded fs-14">+ Add New Driver</a>
 
 
                                             </div>
@@ -246,16 +246,14 @@
                                                 <table id="example3" class="display" style="min-width: 845px">
                                                     <thead>
                                                         <tr>
-                                                            <th>Image</th>
-                                                            <th>No</th>
-                                                            <th>Name</th>
-                                                            <th>Username</th>
-                                                            <th>Phone</th>
-                                                            <th>Address</th>
-
-                                                            <th>Joining Date</th>
-
-                                                            <th>Action</th>
+                                                            <th><small>Image</small></th>
+                                                            <th><small>No</small></th>
+                                                            <th><small>Name</small></th>
+                                                            <th><small>Username</small></th>
+                                                            <th><small>Phone</small></th>
+                                                            <th><small>Address</small></th>
+                                                            <th><small>Joining Date</small></th>
+                                                            <th><small>Action</small></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -291,26 +289,14 @@
                                                                 <div class='d-flex'>
                                                                     <a href='driveredit.php?id=$id' class='btn btn-primary  '<b>Edit </b>
                                                                     </a>
-                                                                    <!-- <button type='button' class='btn btn-primary mb-2' data-bs-toggle='modal' data-bs-target='#exampleModalCenter'>Modal centered</button> -->
-                                                                    &nbsp;
-                                                                    <a href='#' class='btn btn-danger '><b>Delete</b>
+                                                                   
+                                                                    <a href='deletedriver.php?id=$id' class='btn btn-danger editbtn '><b>Delete</b>
                                                                     </a>
                                                                 </div>
                                                             </td>
                                                         </tr>
                                                             ";
                                                         } ?>
-
-
-
-
-
-
-
-
-
-
-
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -318,9 +304,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
                         </div>
                     </div>
 
@@ -348,28 +331,10 @@
 
 
                             <div class="form-group">
-                                <label> Id </label>
+                                <label> Are You Sure Want To delete </label>
                                 <input type="text" name="fname" id="fname" class="form-control" placeholder="Enter First Name" readonly>
                             </div>
 
-                            <div class="form-group">
-                                <label> Name </label>
-                                <input type="text" name="name" id="lname" class="form-control" placeholder="Enter Last Name">
-                            </div>
-
-                            <div class="form-group">
-                                <label> User Name </label>
-                                <input type="text" name="urname" id="course" class="form-control" placeholder="Enter Course">
-                            </div>
-
-                            <div class="form-group">
-                                <label> Phone </label>
-                                <input type="text" name="phone" id="contact" class="form-control" placeholder="Enter Phone Number">
-                            </div>
-                            <div class="form-group">
-                                <label> Address </label>
-                                <input type="text" name="address" id="phone" class="form-control" placeholder="Enter Phone Number">
-                            </div>
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
@@ -614,10 +579,7 @@
 
                 $('#id').val(data[0]);
                 $('#fname').val(data[1]);
-                $('#lname').val(data[2]);
-                $('#course').val(data[3]);
-                $('#contact').val(data[4]);
-                $('#phone').val(data[5]);
+              
             });
         });
     </script>

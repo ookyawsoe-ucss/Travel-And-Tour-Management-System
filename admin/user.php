@@ -113,16 +113,15 @@
                                                 <table id="example3" class="display" style="min-width: 845px">
                                                     <thead>
                                                         <tr>
-                                                            <th></th>
-                                                            <th>Name</th>
-                                                            <th>Username</th>
-                                                            <th>Phone</th>
-                                                            <th>Email</th>
-                                                            <th>Address</th>
-                                                            <th>Nrc Number</th>
-                                                            <th>Joining Date</th>
-
-                                                            <th>Action</th>
+                                                            <th><small>Image</small></th>
+                                                            <th><small>Name</small></th>
+                                                            <th><small>Username</small></th>
+                                                            <th><small>Phone</small></th>
+                                                            <th><small>Email</small></th>
+                                                            <th><small>Address</small></th>
+                                                            <th><small>Nrc Number</small></th>
+                                                            <th><small>Joining Date</small></th>
+                                                            <th><small>Action</small></th>
                                                         </tr>
                                                     </thead>
 
