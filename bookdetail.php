@@ -37,8 +37,40 @@
     include 'autoid.php';
 
 
-    $id = $_GET['id'];
+    
 
+    if (isset($_POST['btnregister'])) {
+
+        $cuid = $_POST['txtuid'];
+        $pid = $_POST['txtpid'];
+        $username = $_POST['cusname'];
+        $phone = $_POST['phone'];
+        $quantity = $_POST['quantity'];
+        $total = $_POST['total'];
+        $nname = $_POST['pkname'];
+        $ddday = $_POST['textdday'];
+        $ddate = $_POST['txtdate'];
+        $ddesc = $_POST['desc'];
+        $aamount = $_POST['amount'];
+        $bid = $_POST['txtbid'];
+        $dddate = date("Y-m-d", strtotime($ddate));
+    
+        $insert = "INSERT into booking (id,cid,phone,customer_name,total_price,ticket_count,p_name,price,descr,	depature_date,duration_day,p_id) values ('$bid','$uid','$phone','$username','$total','$quantity','$nname','$aamount','$ddesc','$dddate','$ddday','$pid')";
+        
+        // $insert = "Insert into test1 (c_id,phone,name,t_price,p_number,p_name,price,descr,d_date,d_day) values ('$cuid','$phone','$username','$total','$quantity','$nname','$aamount','$ddesc','$dddate','$ddday')";
+
+        $ret1 = mysqli_query($connect, $insert);
+
+        if ($ret1) {
+            echo"<script>window.location='payment.php?id=$bid';</script>";
+            echo "<script>alert('Booking Successful! ');</script>";
+
+        } else {
+            echo mysqli_error($connect);
+        }
+    }
+
+    $id = $_GET['id'];
     $delete = "select * from package  where id='$id'";
     $ret = mysqli_query($connect, $delete);
     $row = mysqli_fetch_array($ret);
@@ -82,36 +114,7 @@
 
 
 
-    if (isset($_POST['btnregister'])) {
-
-        $cuid = $_POST['txtuid'];
-        $pid = $_POST['txtpid'];
-        $username = $_POST['cusname'];
-        $phone = $_POST['phone'];
-        $quantity = $_POST['quantity'];
-        $total = $_POST['total'];
-        $nname = $_POST['pkname'];
-        $ddday = $_POST['textdday'];
-        $ddate = $_POST['txtdate'];
-        $ddesc = $_POST['desc'];
-        $aamount = $_POST['amount'];
-        $bid = $_POST['txtbid'];
-        $dddate = date("Y-m-d", strtotime($ddate));
     
-        $insert = "INSERT into booking (id,cid,phone,customer_name,total_price,ticket_count,p_name,price,descr,	depature_date,duration_day,p_id) values ('$bid','$uid','$phone','$username','$total','$quantity','$nname','$aamount','$ddesc','$dddate','$ddday','$pid')";
-        
-        // $insert = "Insert into test1 (c_id,phone,name,t_price,p_number,p_name,price,descr,d_date,d_day) values ('$cuid','$phone','$username','$total','$quantity','$nname','$aamount','$ddesc','$dddate','$ddday')";
-
-        $ret1 = mysqli_query($connect, $insert);
-
-        if ($ret1) {
-            echo"<script>window.location='payment.php?id=$bid';</script>";
-            echo "<script>alert('Booking Successful! ');</script>";
-
-        } else {
-            echo mysqli_error($connect);
-        }
-    }
 
     ?>
 

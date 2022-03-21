@@ -49,11 +49,11 @@
     $count = mysqli_num_rows($ret);
     if ($count) {
       $file = mysqli_fetch_assoc($ret);
-      // $_SESSION['id']=$file['id'];
-      // $_SESSION['name']=$file['name'];
+       $_SESSION['id']=$file['id'];
+       $_SESSION['password']=$file['password'];
 
       echo "<script>alert(' Login Success');
-            window.location='admin/index.php';</script>";
+            window.location='admin/index.php?';</script>";
     } else {
       $insert1 = "SELECT * from customer where email='$name' and password='$password'";
       $ret1 = mysqli_query($connect, $insert1);

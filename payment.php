@@ -114,6 +114,16 @@ span.price {
     include 'Connection.php';
 session_start();
 
+if (isset($_POST['btnsubmit']))
+{
+   
+    echo"<script>alert('Successfully Finish');window.location='index.php';
+    </script>"; 
+
+   
+ 
+  
+};
     $id = $_GET['id'];
 
     $delete = "
@@ -126,16 +136,7 @@ session_start();
     $person = $row['ticket_count'];
     $total = $row['total_price'];
 
-    if (isset($_POST['btnsubmit']))
-    {
-       
-        echo"<script>alert('Successfully Finish');window.location='index.php';
-        </script>"; 
   
-       
-     
-      
-    };
 
     ?>
 
