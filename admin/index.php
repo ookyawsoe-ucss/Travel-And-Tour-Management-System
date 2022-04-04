@@ -48,7 +48,11 @@
     ***********************************-->
 	<div id="main-wrapper">
 		<?php
-		 include('../common/adminheader.php')
+		 include('../common/adminheader.php');
+		 include "../Connection.php";
+		 session_start();
+		 $id = $_SESSION['id'] ?? "";
+				$password = $_SESSION['password'] ?? "";
 		?>
 
 		<!--**********************************

@@ -32,8 +32,10 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="profile.css">
   <script src="./js/profile.js"></script>
+  <link href="admin/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
+    <link href="admin/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link rel="stylesheet" href="admin/vendor/nouislider/nouislider.min.css">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -191,58 +193,74 @@
   </div>
 
 
-  <div class="container">
-            <style>
-              table {
-                border-collapse: collapse;
-                width: 100%;
-              }
-
-              th,
-              td {
-                padding: 8px;
-                text-align: left;
-                border-bottom: 1px solid #ddd;
-              }
-
-              tr:hover {
-                background-color: coral;
-              }
-            </style>
+  <div class="container mt-5 mb-5">
+            
             <div id="demo" class="collapse ">
-              <table>
-                <tr>
+            <table class="display" style="width:100%">
+            <thead>
+                                                        <tr>
+                                                            <th>Package Name</th>
+                                                            <th>Total Person</th>
+                                                            <th>Price</th>
+                                                            <th>Total PRice</th>
+                                                            <th>Departure Date Time</th>
+                                                            
+                                                        </tr>
+                                                    </thead>
+                                                   
+                <!-- <tr>
                   <th> Package Name</th>
                   <th>Total Person</th>
                   <th>Price</th>
                   <th>Total PRice</th>
                   <th>Departure Date Time</th>
-                </tr>
-                <tr>
-                  <td>Peter</td>
-                  <td>Griffin</td>
-                  <td>$100</td>
-                </tr>
-                <tr>
-                  <td>Lois</td>
-                  <td>Griffin</td>
-                  <td>$150</td>
-                </tr>
-                <tr>
-                  <td>Joe</td>
-                  <td>Swanson</td>
-                  <td>$300</td>
-                </tr>
-                <tr>
-                  <td>Cleveland</td>
-                  <td>Brown</td>
-                  <td>$250</td>
-                </tr>
+                </tr> -->
+                <?php
+                     $select = "SELECT * FROM booking b,customer c WHERE b.cid=c.id and c.id='$uid'";
+
+                   	$ret=mysqli_query($connect,$select);
+							$count=mysqli_num_rows($ret);
+                   	for ($i=0; $i < $count ; $i++) 
+							{ 
+							   $row=mysqli_fetch_array($ret);
+							  $bid=$row['p_name'];
+                $tcount=$row['ticket_count'];
+                $price=$row['price'];
+                $tprice=$row['total_price'];
+
+                $depature=$row['depature_date'];
+                $ddate= date("d-M", strtotime($depature));
+
+							  echo "
+                <tbody>
+							      <tr>
+                    
+                    
+                    <td>$bid </td>   
+               
+                    <td>$tcount </td>   
+                    <td>$price </td> 
+                    <td>$tprice </td> 
+                    <td>$ddate  </td> 
+                       
+							      </tr>
+                    </tbody>
+
+							    ";
+							}
+              ?>
               </table>
             </div>
           </div>
 
 
+
+
+<!-- 
+          <script src="admin/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="admin/js/plugins-init/datatables.init.js"></script>
+
+    <script src="admin/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script> -->
 
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -258,9 +276,15 @@
   <script src="js/bootstrap-datepicker.js"></script>
   <script src="js/jquery.timepicker.min.js"></script>
   <script src="js/scrollax.min.js"></script>
-
+          <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+          <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
+  <script>
+    $(document).ready(function() {
+    $('#example').DataTable();
+} );
+  </script>
 
 </body>
 

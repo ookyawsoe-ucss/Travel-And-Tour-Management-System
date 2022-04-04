@@ -37,7 +37,7 @@
 									<!-- <img src="images/user.jpg" width="50" alt="" class="rounded-circle"> -->
 								</a>
 								<div class="dropdown-menu dropdown-menu-end">
-									<a href="index.php" class="dropdown-item ai-icon">
+									<a href="" class="dropdown-item ai-icon"class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
 										<i class="fa-solid fa-unlock-keyhole text-info"></i>
 										<span class="ms-2 text-info">Change Password </span>
 									</a>
@@ -151,9 +151,42 @@
 
 			</div>
 		</div>
+		                <!-- Button trigger modal -->
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModalCenter">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Change Password</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+												<div class="basic-form">
+												<form>
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control input-default " placeholder="Old Password" >
+                                        </div>
+										<div class="mb-3">
+                                            <input type="text" class="form-control input-default " placeholder="Input New Password">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control input-rounded" placeholder="Confirm Password">
+                                        </div>
+                                    </form>
+                                </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 		<!--**********************************
             Sidebar end
         ***********************************-->
 
 		<!--**********************************
             Content body start
+
